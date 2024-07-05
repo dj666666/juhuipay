@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://172.81.61.105/api/pay/show?oid=SD202305101113458811908 -->
+<html style="font-size: 23.4375px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>订单信息</title>
+    <meta name="description" content="支付">
+    <meta name="keywords" content="支付">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+    <link rel="stylesheet" href="/assets/static/jwzc/n_main.css">
+    <link rel="stylesheet" href="/assets/static/jwzc/pay.css">
+    <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+
+    <style type="text/css" id="c_payment_bank"></style>
+    <style type="text/css">
+        .clear-input {
+            display: none;
+            position: absolute;
+            z-index: 10;
+            top: 0 !important;
+            right: 0 !important;
+            width: 30px;
+            height: 100%
+        }
+
+        .clear-input span {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 30px;
+            top: 50% !important;
+            left: 50%;
+            margin: -8px 0 0 -8px;
+            background: #b1b1b1
+        }
+
+        .clear-input span:after, .clear-input span:before {
+            position: absolute;
+            content: '';
+            top: 4px;
+            left: 7px;
+            width: 2px;
+            height: 8px;
+            background: #fff;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg)
+        }
+
+        .clear-input span:before {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg)
+        }
+
+        .red {
+            color: red;
+        }
+
+        .clear-input-box {
+            position: relative
+        }
+
+        #tips {
+            margin: 0 0.25rem 0.25rem;
+            border-radius: 0.25rem;
+            font-size: 0.6rem;
+            overflow: hidden;
+            color: #32465b;
+        }
+
+        #tips ul {
+            background-color: #fff;
+            border: none;
+            box-shadow: 0px 0px 10px #97cdfc;
+        }
+
+        #tips ul > li {
+            position: relative;
+            padding: 0.2rem;
+            line-height: 1rem;
+            overflow: hidden;
+        }
+
+        .p-i-btn-box {
+            margin: 0.3rem auto 0.3rem;
+        }
+
+        .p-index-payway li {
+            padding: 0.25rem;
+        }
+    </style>
+
+</head>
+<body class="gray nofastclick c_payment_body p-main-frame-bg" onselectstart="return false">
+<div id="main">
+    <div class="main-frame c_payment_main_frame main-frame-pt">
+        <div class="main-viewport">
+            <div id="client_id_viewport_1_1603097803040" page-url="" data-view-name="index" style="">
+                <div class="c_payment_wrap_box wrapbox">
+                    <div class="c_payment_index_box indexbox" style="background:#98dcfb">
+                        <article class="cont_wrapnew p-pt10">
+                            <div class="popview-head popview-head-index c_payment_popview_head" data-name="popview-head">
+                                <div class="popviewhead-back c_payment_popview_head_back" data-name="popviewhead-back"></div>
+                                <span class="popviewhead-title c_payment_popview_head_title" id="card_name_title">骏网智充卡{$pay_amount}元</span><i id="amount0">
+                            </i></div><i id="amount0">
+                            <div id="c_payment_topNotice"></div> <!--订单模块-->
+                            <div class="p-index-paybill" id="c_payment_index_OrderDetail_box">
+                                <div class="bill-title">
+                                    <div class="hotel-bill-title-primary red">
+                                        注意：请注意购买对应的卡类别和面额
+                                    </div>
+
+                                    订单号：<i id="orderNo"></i>
+                                </div>
+                                <div class="cir-ico"><i class="cir-ico-line"></i></div>
+                                <div class="bill-price">
+                                    <span class="bill-price-title"> 商品名称： </span>
+                                    <div class="bill-price-content">
+                                        <div class="bill-price-row1">
+                                            <span class="bill-price-main">
+                                            <span class="corange">
+                                                 <span class="cfont18 bold" id="card_name">骏网智充卡{$pay_amount}元</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bill-price">
+                                    <span class="bill-price-title"> 商品价格： </span>
+                                    <div class="bill-price-content">
+                                        <div class="bill-price-row1"><span class="bill-price-main">
+                                            <span class="corange"> <span class="font12">¥ </span>
+                                            <span class="cfont18 bold" id="amount2">{$pay_amount}</span>
+                                                <input type="hidden" value="SD202305101113458811908" name="orderid" id="orderid">
+                                            <span class="font12 bold">.00</span>
+                                            </span> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- 支付提醒 -->
+
+                            <div id="c_payment_index_main_area" class="none" style="display: block;">
+                                <!--测试环境schema屏蔽提示-->
+                                <div id="c_payment_index_schema_tips" class="p-index-n-coupon corange pay-index-aimated fade-in-down" style="display: none; opacity: 0;"></div> <!--礼品卡节点-->
+                                <!--优惠模块节点-->
+                                <div id="c_payment_index_recom_reduce" class="position-relative" style="opacity: 1;"></div>
+                                <!-- 本人账户支付 文案 -->
+
+
+                                <div class="deduct-detail none-imp" style="opacity: 1;">
+                                    <div class="none" id="c_payment_index_mixedText" style="display: none;"></div>
+                                    <div id="c_payment_index_deduct" class="none" style="display: none;"><span class="hidden"></span>
+                                        <div class="bold" style="color:#333333; margin-bottom:0.3rem;"></div>
+                                        <span class="content limit-four-line-ac"></span>
+
+                                    </div>
+                                </div> <!--VIP推荐方式D版-->
+                                <div class="c_payment_srbglob pay-index-aimated fade-in-down" id="c_payment_srb_abtest_eleby_d" style="opacity: 0;"></div> <!--支付按钮-->
+                                <div class="p-i-btn-box" id="c_payment_index_payBtn_wrap" style="opacity: 1;">
+                                    <a class="p-n-index-btn" id="c_payment_index_payBtn" style="display: block; background-color: rgb(51, 122, 183);" href="https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A1100">点击跳转到京东购买</a>
+                                </div>
+
+                                <div class="p-i-btn-box" id="c_payment_index_payBtn_wrap" style="opacity: 1;">
+                                    <a class="p-n-index-btn" id="c_payment_index_payBtn_taobao" style="display: block; background-color: rgb(51, 122, 183);" href="https://main.m.taobao.com/search/index.html?spm=a215s.7406091.topbar.1.560c6770snz1OF&amp;pageType=3&amp;q=%E9%AA%8F%E5%92%94%E6%99%BA%E5%86%B2%E5%8D%A1100">点击跳转到淘宝购买</a>
+                                </div>
+
+                                <div class="p-i-btn-box" id="c_payment_index_payBtn_wrap" style="opacity: 1;display: none;">
+                                    <a class="p-n-index-btn" id="c_payment_index_payBtn_pdd" style="display: block; background-color: rgb(51, 122, 183);" href="https://mobile.yangkeduo.com/search_result.html?sort_type=_sales&amp;search_key=%E9%AA%8F%E7%BD%91%E6%99%BA%E5%86%B2%E5%8D%A1100">点击跳转到拼多多购买</a>
+                                </div>
+
+
+                                <div id="tips" class="" style="opacity: 1;"><ul><li>操作步骤：</li><li>请在淘宝购买卡密</li><li>请在商城搜索并购买<span class="h4 text-danger">”骏网智充卡”</span></li><li>付款时候账号随便填写，付款成功后点击订单详情</li><li>点击联系客服获取卡号和密码，正确输入卡号和密码，一定点击确认提交！</li><li><div style="font-size:14px;color: #f00;font-weight:bold">注意：若不按照操作步骤导致账单无法核实需要您个人承担损失</div></li></ul></div>
+                                <div id="c_payment_index_lipin_card" class="p-index-payway" style="opacity: 1;">
+                                    <ul>
+                                        <li class="p15 opacity_8">
+                                            <div class="lh100">
+                                                <input type="text" name="card_no" style="border: 1px solid #ccc;border-radius: 10px;margin-top: 0.5rem;" placeholder="请输入骏网智充卡卡号" autocomplete="off"></div>
+                                        </li>
+                                        <li class="p15 opacity_8">
+                                            <div class="lh100">
+                                                <input type="text" name="card_pwd" placeholder="请输入骏网智充卡卡密" style="border: 1px solid #ccc;margin-top: 0.5rem;;padding-right: 20px;border-radius: 10px;" autocomplete="off">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="p-i-btn-box" id="c_payment_index_payBtn_wrap" style="opacity: 1;">
+                                    <a class="p-n-index-btn" id="c_payment_index_payBtn2" style="display: block">
+                                        提交卡密
+                                    </a>
+                                </div>
+                                <!--底部说明-->
+                                <div class="view60" style="opacity: 1;">
+                                    <div class="p0_10 mt100">
+                                        <ul id="c_payment_index_unionpayMark" class="erisign4">
+                                            <li class="ic2"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </i></article><i id="amount0">
+                    </i></div><i id="amount0">
+                </i></div><i id="amount0">
+            </i></div><i id="amount0">
+
+        </i></div><i id="amount0">
+        <div class="main-state"></div>
+    </i></div><i id="amount0">
+</i></div><i id="amount0">
+<div id="footer"></div>
+
+<script>
+    if (self != top) {
+        top.location = self.location;
+    }
+</script>
+
+<style>
+    .container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        color: var(--weui-FG-0);
+    }
+</style>
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+</style>
+
+<script type="text/javascript">
+    $(window).on("load", function () {
+        var winHeight = $(window).height();
+
+        function is_weixin() {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        var isWeixin = is_weixin();
+        if (isWeixin) {
+            document.title = '请在浏览中打开';
+            $(".weixin-tip").css("height", winHeight);
+            $(".weixin-tip").show();
+        }
+        prepare();
+    })
+</script>
+<script>
+    
+    layui.use(['layer','form'], function(){
+    var $ = layui.jquery, layer = layui.layer, form = layui.form;
+
+    /*layer.confirm('购买后记得回来本页面提交卡密才能充值成功', {
+      title: "支付提示",
+      icon: 1,
+      btn: ['我已知晓'],
+      closeBtn :0,
+      btnAlign: "c",
+    }, function(index, layero){
+
+      layer.close(index);
+
+    });*/
+
+
+
+    /*layer.prompt({
+        btn:['确定提交'],
+        closeBtn :0,
+        title: '请输入你付款账号的名字',
+        formType: 0
+
+    }, function (value, index) {
+
+        $.post("/api/gateway/setName", {
+            tradeNo: orderNo,
+            name:value
+        },
+        function(data){
+            console.log(data);
+            if(data.code==1){
+                layer.close(index);
+                layer.msg(data.msg, {time: 2000}, function () {
+
+                });
+
+
+            }else{
+                layer.msg(data.msg, {time: 1500, anim: 6});
+            }
+        });
+
+
+
+    });*/
+
+  })
+  
+    let timer;
+    let i = 20;
+    let deepLink = '';
+    var card_code="PDDZHICHOGNKA";
+    
+	var amount = '<?php echo $pay_amount ;?>';
+    var orderNo = '<?php echo $out_trade_no ;?>';
+    var orderId = '29330620';
+    var time    = '<?php echo $time ;?>';
+    var click_data    = '<?php echo $click_data ;?>';
+    
+    //二维码对象
+    var objQrCode;
+    //检查订单定时器
+    var checkOrderInterval;
+    //倒计时定时器
+    var countDownInterval;
+
+    $(document).ready(function () {
+        //检查订单
+        checkOrderInterval = setInterval(checkOrder, 1000);
+        
+    });
+  
+    function tip() {
+        var paybutton = $("#paybutton");
+        if (i > 0)
+            paybutton.html('启动倒计时：' + i--);
+        else {
+            paybutton.html('启动倒计时：' + i--);
+            clearInterval(timer);
+        }
+    }
+
+    function isMobile() {
+        let flag = navigator.userAgent.match(
+            /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+        );
+        return flag;
+    }
+
+    function jumpPddApp() {
+        var t = "pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2F%3Fkeyword%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A150";
+        try {
+            var e = navigator.userAgent.toLowerCase(),
+                n = e.match(/cpu iphone os (.*?) like mac os/);
+            if (((n = null !== n ? n[1].replace(/_/g, ".") : 0), parseInt(n) >= 9)) {
+                window.location.href = t;
+            } else {
+                var r = document.createElement("iframe");
+                (r.src = t), (r.style.display = "none"), document.body.appendChild(r);
+            }
+        } catch (e) {
+            window.location.href = t;
+        }
+    }
+
+    function prepare() {
+
+     if (card_code === 'PDDZHICHOGNKA') {
+           $("#card_name_title").html("骏网智充卡" + amount + "元");
+            $("#card_name").html("骏网智充卡" + amount + "元");
+            $("input[name=card_no]").attr("placeholder", "请输入骏网智充卡卡号");
+            $("input[name=card_pwd]").attr("placeholder", "请输入骏网智充卡卡密");
+            var txt = "<ul><li>操作步骤：</li>";
+            txt += "<li>请在淘宝购买卡密</li>";
+            txt += "<li>请在商城搜索并购买<span class='h4 text-danger'>”骏网智充卡”</span></li>";
+            txt += "<li>付款时候账号随便填写，付款成功后点击订单详情</li>";
+            txt += "<li>点击联系客服获取卡号和密码，正确输入卡号和密码，一定点击确认提交！</li>";
+            txt += "<li><div style='font-size:14px;color: #f00;font-weight:bold'>注意：若不按照操作步骤导致账单无法核实需要您个人承担损失</div></ul>";
+            $("#tips").html(txt);
+            // $("#c_payment_index_payBtn").parent().hide();
+             var jd_link = "https://so.m.jd.com/ware/search.action?keyword=骏网智充卡" + amount;
+            var tb_link = "https://main.m.taobao.com/search/index.html?spm=a215s.7406091.topbar.1.560c6770snz1OF&pageType=3&q=%E9%AA%8F%E5%92%94%E6%99%BA%E5%86%B2%E5%8D%A1" + amount;
+            var pdd_link = "https://mobile.yangkeduo.com/search_result.html?sort_type=_sales&search_key=骏网智冲卡" + amount;
+            if (isMobile()) {
+                   $("#c_payment_index_payBtn").attr("href", 'openapp.jdmobile://virtual?params={"category":"jump","des":"m","url":"' + jd_link + '","keplerID":"0","keplerFrom":"1","kepler_param":{"source":"kepler-open","otherData":{"mopenbp7":"0"},"channel":"8bfd09e186324410bd59504c345afd85"},"union_open":"union_cps"}').css("background-color", "#337ab7").html("点击跳转到京东购买");
+                $("#c_payment_index_payBtn_pdd").attr("href", 'pddopen://?h5Url=' + encodeURIComponent(pdd_link)).css("background-color", "#337ab7").html("点击跳转到拼多多购买");
+                $("#c_payment_index_payBtn_taobao").attr("href", 'tbopen://m.taobao.com/tbopen/index.html?h5Url=' + encodeURIComponent(tb_link)).css("background-color", "#337ab7").html("点击跳转到淘宝购买").show();
+            } else {
+                $("#c_payment_index_payBtn_pdd").attr("href", pdd_link).css("background-color", "#337ab7").html("点击跳转到拼多多购买");
+                $("#c_payment_index_payBtn_taobao").attr("href", tb_link).css("background-color", "#337ab7").html("点击跳转到淘宝购买").show();
+            }
+
+        }
+    }
+
+
+    function submit() {
+
+        if (!beforeSubmit()) {
+            return false;
+        }
+
+        timer = setInterval(tip, 1000);
+        layer.msg('提交卡密中，请稍后..', {
+                    icon: 16
+                    ,shade: 0.3
+                    ,time: false
+                });
+
+		var cardInfo = $("input[name=card_no]").val();
+		cardInfo = cardInfo.trim();
+		var pwd = $("input[name=card_pwd]").val();
+		pwd = pwd.trim();
+
+		var url ="/api/gateway/subJwCard";
+        $.ajax({
+            url: url,
+            type: 'post',
+            async: false,
+            data: {
+                tradeNo: orderNo,
+                cardno: cardInfo,
+                cardpwd: pwd,
+                // price: price
+            },
+            dataType: 'json',
+            success: function (data) {
+                clearInterval(timer);
+                layer.closeAll();
+                var msg =data.msg;
+                if (data.code == 1) {
+                    //toastr.success(data.msg);
+                    //layer.msg(data.msg, {icon:16, time : 30000});
+                    alert(data.msg);
+                    location.reload();
+                }else{
+                    alert(data.msg);
+                    //location.reload();
+                    //layer.msg(data.msg, {icon:2, time: 1500, anim: 6});
+                }
+            },
+            error: function () {
+                layer.closeAll();
+            }
+        });
+    }
+
+    var checkOrder = function () {
+    $.get("/api/gateway/checkorder", { tradeNo: orderNo, t: Math.random() }, function (result) {
+      if (result.data.status == "1") {
+        clearInterval(checkOrderInterval);
+        layer.alert("支付成功", {icon: 1,closeBtn: 0},function(index){
+          //closeWindow();
+          layer.close(index)
+
+          location.reload();
+
+        });
+
+      }/*else if (result.data.status == "3") {
+        
+        layer.alert("支付时间已过期", {icon: 2,closeBtn: 0},function(index){
+          //closeWindow();
+          layer.close(index)
+          //location.reload();
+        });
+
+        setQrCodeTimeOut("订单超时");
+      }*/
+    });
+  }
+  
+    function appJump(src) {
+        // alert(navigator.userAgent);
+        if (src) {
+            top.location.href = src;
+            var ifr = document.createElement('iframe');
+            ifr.src = src;
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+        }
+    }
+
+    $("#c_payment_index_payBtn2").on('click', function () {
+        submit();
+    });
+
+    function beforeSubmit() {
+        let card_no = $("input[name=card_no]").val();
+		card_no = card_no.trim();
+        let card_pwd = $("input[name=card_pwd]").val();
+		card_pwd = card_pwd.trim();
+        if (card_code.length != 16 && card_pwd.length != 16) {
+            // layer.confirm('请输入正确的卡密', {icon: 3, title: '提示'});
+            layer.alert('请输入正确的卡密!', {icon: 7});
+            return false;
+        }
+
+        return true;
+    }
+
+    var check_time = 0;
+
+
+
+
+
+</script>
+
+
+
+
+</i></body></html>

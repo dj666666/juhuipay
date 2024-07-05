@@ -1,0 +1,61 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Bank_user')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bank_user" data-rule="required" class="form-control" autocomplete="off" name="row[bank_user]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Bank_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bank_number" data-rule="required;" class="form-control" autocomplete="off" name="row[bank_number]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Bank_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bank_type" data-rule="required;chinese" class="form-control" autocomplete="off" name="row[bank_type]" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-amount" data-rule="required" class="form-control" name="row[amount]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text">
+        </div>
+    </div>
+    {if $site.order_checkmerchantgoogle}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Google_captcha')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-google_captcha" data-rule="required" class="form-control" name="row[google_captcha]" type="text" value="">
+        </div>
+    </div>
+    {/if}
+
+    {if $site.order_checkmerchantpaypwd}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_password')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_pwd" data-rule="required" class="form-control" name="row[pay_pwd]" type="password" value="">
+        </div>
+    </div>
+    {/if}
+
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

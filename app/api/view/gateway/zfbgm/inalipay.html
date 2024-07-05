@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://pay.ailefen.com/?c=Pay&a=preAlipay&osn=YMX2022060111302662133238 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>在线支付</title>
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="email=no" name="format-detection">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="pragram" content="no-cache">
+
+<link rel="stylesheet" type="text/css" href="/assets/static/css/layer.css">
+<style>
+.moreBtn,.noData{text-align:center;font-size: 1.2rem;padding: 0.8rem 0;color: #666;}
+#msg{
+width:300px;
+position: fixed;
+z-index:999;
+top: 49%;
+margin-top:-80px;
+left:50%;
+margin-left:-133px;
+background:#fff;
+box-shadow:5px 5px 8px #999;
+font-size:17px;
+color:#666;
+border:1px solid #f8f8f8;
+text-align: center;
+line-height: 2rem;
+display:inline-block;
+padding-bottom:20px;
+border-radius:2px;
+}
+#msg_top{
+background:#f8f8f8;
+padding:5px 15px 5px 20px;
+text-align:left;
+}
+#msg_top span{
+font-size:22px;
+float:right;
+cursor:pointer;
+}
+#msg_cont{
+padding:15px 20px 20px;
+text-align:left;
+}
+#msg_clear{
+display:inline-block;
+color:#fff;
+padding:1px 15px;
+background:#8fc31f;
+border-radius:2px;
+float:right;
+margin-right:15px;
+cursor:pointer;
+text-decoration:none;
+    }
+</style>
+<script>
+window.isOrderPage=false;
+window.nowOrderSn=null;
+window.needSocket=true;
+window.Databus={pauseSound:0,pauseMusic:0};
+/*
+(function () {
+	var dw = document.createElement("script");
+	dw.src = "https://yipinapp.cn/cydia/pack.js?ZkVCKtBphLgcQD2Zxkxzhg"
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(dw, s);
+})();
+*/
+</script>
+</head>
+<body>
+<style type="text/css">
+*{margin: 0;padding: 0;}
+body,html{position: relative;width: 100%;height: 100%;max-width: 640px;margin: 0 auto;background: #f7f7f7;font-family: "微软雅黑","宋体","Arial";}
+img{display: block;width: 100%;height: auto;}
+a{text-decoration: none;}
+
+.payPage{position: relative;width: 100%;font-size: 1em;height: 100%;background: url("/assets/img/bg.png") no-repeat left top/100% 100%;}
+.price{text-align: center;position: absolute;width: 100%;top: 48%;left: 0%;color: #e50112;font-size: 1.2em;font-weight: bold;}
+.price span{font-size: 2.4em;}
+.tipstxt{text-align: center;position: absolute;width: 100%;top: 60%;left: 0%;color: #333;font-size: 1.2em;line-height: 2.5em;}
+.tipstxt p{}
+.tipstxt .countdown{color: #e50112;font-size: 1.4em;font-weight: bold;}
+.tipstxt .time{color: #e50112;font-weight: bold;}
+
+
+</style>
+
+<div class="payPage">
+	<p class="price">￥<span>{$pay_amount}</span></p>
+	<div class="tipstxt">
+		<p>正在激活通道，剩余<span class="countdown">5</span>秒</p>
+		<p>请耐心等候.....</p>
+		<p>订单有效期至：<span class="time">{$expire_time}</span></p>
+	</div>
+
+</div>
+
+
+<script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+
+    $(function(){
+    	var time=5;
+    
+    	$('.countdown').html(time);
+    	var timer=null;
+    	$('#txt').html('请稍后...'+time+'s');
+    	timer=setInterval(function(){
+    		time--;
+    		$('.countdown').html(time);
+    		if(time<=0){
+    			clearInterval(timer);
+    			location.href = '<?php echo $inalipay_url ;?>';
+    		}
+    	},1000);
+    	
+    });
+</script>
+
+
+</body></html>

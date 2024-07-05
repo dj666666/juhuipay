@@ -1,0 +1,130 @@
+<style>
+    .panel-fieldlist .fieldlist dd ins {
+        width: 20%;
+    }
+
+    .panel-fieldlist .fieldlist dd input, .panel-fieldlist .fieldlist dd select {
+        width: 100%;
+    }
+
+    .list-group-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .groups {
+        display: flex;
+        align-items: center;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .list-group .list-group-item .label {
+        padding: 5px 10px;
+    }
+
+    .table-goods > thead > tr > th, .table-goods > tbody > tr > th, .table-goods > thead > tr > td, .table-goods > tbody > tr > td {
+        vertical-align: middle;
+    }
+
+    .order-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .print-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media print {
+        .electronics, .btn-print-page, .memo-operate {
+            display: none;
+        }
+    }
+    
+    li{
+        display:block;
+        white-space:normal;
+        word-break : break-all;
+        word-wrap: break-word;
+    }
+</style>
+<div id="app">
+    
+    <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <ul class="list-group">
+                        <li class="list-group-item">所属商户：{$row.mer_username}</li>
+                        <li class="list-group-item">系统单号：{$row.out_trade_no}</li>
+                        <li class="list-group-item">商户单号：{$row.trade_no}</li>
+                        <!--@formatter:off-->
+                        
+                        <!--@formatter:on-->
+                        
+                        <li class="list-group-item">金额：{$row.amount}</li>
+                        <li class="list-group-item">姓名：{$row.bank_user}</li>
+                        <li class="list-group-item">卡号：{$row.bank_number}</li>
+                        <li class="list-group-item">银行：{$row.bank_type}</li>
+                        
+                        
+                    </ul>
+                </div>
+                <div class="col-xs-6">
+                    <ul class="list-group" style="white-space:nowrap;">
+                        <li class="list-group-item order-status">
+                            <div>
+                                订单状态：
+                                {if $row['status'] == 1}
+                                    <span class="label label-success">完成</span>
+                                {elseif $row['status'] == 2}
+                                    <span class="label label-info">处理中</span>
+                                {elseif $row['status'] == 3}
+                                    <span class="label label-danger">驳回</span>
+                                {elseif $row['status'] == 4}
+                                    <span class="label label-danger">冲正</span>
+                                {/if}
+                            </div>
+                            
+                        </li>
+                        <li class="list-group-item">
+                            <div>
+                                回调状态：{$row.is_callback ? '已回调' : '未回调'}
+                            </div>
+                        </li>
+                        <li class="list-group-item">创建时间：{$row.createtime|date="Y-m-d H:i:s"}</li>
+                        <li class="list-group-item">抢单时间：{notempty name="row.robbed_time"}{$row.robbed_time|date="Y-m-d H:i:s"}{/notempty}</li>
+                        <li class="list-group-item">处理时间：{notempty name="row.ordertime"}{$row.ordertime|date="Y-m-d H:i:s"}{/notempty}</li>
+                        <li class="list-group-item">回调时间：{notempty name="row.callback_time"}{$row.callback_time|date="Y-m-d H:i:s"}{/notempty}</li>
+                        <li class="list-group-item">处理账号：{$row.deal_username}</li>
+                        <li class="list-group-item">备注：{$row.remark}</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="list-group" style="white-space:nowrap;">
+                        <li class="list-group-item">提单ip：{$row.ip_address}</li>
+                        <li class="list-group-item">处理ip：{$row.deal_ip_address}</li>
+                        <li class="list-group-item">回调地址：{$row.notify_url}</li>
+                        <li class="list-group-item">回调内容：{$row.callback_content}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+    
+</div>
+
+
+
+

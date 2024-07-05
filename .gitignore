@@ -1,0 +1,17 @@
+/.idea
+/.vscode
+/runtime
+/public/uploads
+/public/.htaccess
+/public/nginx.htaccess
+/public/.user.ini
+/public/ck
+/public/.well-known
+/public/test/gateway.php
+/config/site.php
+/config/app.php
+.htaccess
+*.log
+.env
+config/install.lock
+yfcmf_tp6.sql

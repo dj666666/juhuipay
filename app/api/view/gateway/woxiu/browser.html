@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://p.6ffk7p.z1024.top/zfb/pc/29330620 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>在线支付 - 支付宝 - 网上支付 安全快速</title>
+    <link href="/assets/css/dfpay/dfpay.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/assets/static/layui/css/layui.css">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+    <script src="/assets/css/dfpay/qrcode.min.js"></script>
+    <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+    <!--<script src="/assets/static/js/clipboard.min.js" type="text/javascript"></script>-->
+    <script src="/assets/js/clipboard.min.js"></script>
+
+</head>
+<body>
+    <div class="body">
+        <h1 class="mod-title">
+            <!--<span class="ico_log ico-zfbsm"></span>-->
+            <img src="/assets/img/alipay_logo.png" alt="">
+        </h1>
+        <div class="mod-ct">
+            <div class="order">
+            </div>
+            <div class="amount" style="color:#000;">￥
+                <span id="money">{$pay_amount}</span>
+            
+                <!--<button type="button" id="copybtn" class="btn btn-info btn-sm copy2" style="background-color:rgb(246,52,53) !important;border:none;color:#fff;" data-clipboard-target="#money">复制</button>-->
+            
+            </div>
+			<div class="time-item" id="msg">
+			    <h1 >请按照以上金额进行付款，否则无法到账</h1>
+			    <p style="color: red;"><b>请勿重复付款！不到账联系客服！</b></p>
+			</div>
+            <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
+                <div data-role="qrPayImg" class="qrcode-img-area">
+                    <div style="position: relative;display: inline-block;">
+                        <div id="show_qrcode" width="210" height="210" style="display: block;">
+                            <!--<div id="imgLogo" class="logo logo-alipay" style="margin: 86px;"></div>-->
+                            <canvas width="210" height="210" style="display: none;"></canvas><img src="">
+                        
+                        </div>
+                        <div class="expired" id="expiredDiv"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-item-alipay" >
+                <strong id="hour_show" style="background: #1b76fb;"><s id="h"></s>00时</strong>
+                <strong id="minute_show" style="background: #1b76fb;"><s></s>00分</strong>
+                <strong id="second_show" style="background: #1b76fb;"><s></s>00秒</strong>
+            </div>
+
+            <!--<div class="tip">-->
+                <!--<a id="btnDL" href="javascript:;" onclick="gopay()" class="btn btn-primary">请点击立即支付</a>-->
+                <!--<button type="button" id="paybtn" onclick="gopay()" class="btn btn-success btn-lg btn-block" style="width:100%;background-color:#2ebfff;color:white;font-size:18px">点击启动支付宝支付</button>-->
+                <!--<a id='paybtn' href="{$click_data}" style="color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 80%; border-radius: .5rem; font-size: 18px;background-color: #2ebfff; border: 1px solid #2ebfff;letter-spacing:normal;font-weight: normal" class='action'>启动支付宝(推荐)</a>-->
+                
+                <a id='paybtn' href="javascript:;" onclick="gopay()" style="margin-top:10px;color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 80%; border-radius: .5rem; font-size: 18px;background-color: #1b76fb; border: 1px solid #1b76fb;letter-spacing:normal;font-weight: normal" class='action'>打开支付宝APP支付(推荐)</a>
+                
+            <!--</div>-->
+            <div class="tip">
+                <div class="ico-scan-alipay"></div>
+                <div class="tip-text">
+                    <!--<p style="color: red;"><b>或者截图后使用支付宝扫码完成支付</b></p>-->
+                    <p ><b>或截图使用支付宝<span style="color: red;">扫一扫</span></b></p>
+                    <p ><b>选择相册二维码完成支付</b></p>
+                    <!--<p style="color: red;">扫描二维码付</p>
+                    <p style="color: red;"><b> 如遇 “已停止访问该网页” 请截图扫码完成支付</b></p>-->
+                </div>
+            </div>
+
+            <div class="detail detail-ct detail-open" id="orderDetail">
+                <dl class="detail-ct" id="desc" style="overflow: hidden; display: block;">
+                    <dt>金额：</dt>
+                    <dd>{$pay_amount}</dd>
+                    <dt>订单：</dt>
+                    <dd>{$out_trade_no}</dd>
+                    <dt>创建时间：</dt>
+                    <dd>{$create_time}</dd>
+                    <dt></dt>
+                    <dd id="orderStatus"></dd>
+                </dl>
+
+                <a href="javascript:void(0)" class="arrow"><i class="ico-arrow-alipay"></i></a>
+            </div>
+
+            <div class="tip-text">
+            </div>
+
+
+        </div>
+        <div class="foot">
+            <div class="inner">
+                <p>手机用户可保存上方二维码到手机中</p>
+                <p>在支付宝扫码扫一扫中选择“相册”即可</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="copyRight">
+
+    </div>
+    <!--注意下面加载顺序 顺序错乱会影响业务-->
+    <script>
+        layui.use(['layer','form'], function(){
+             var $ = layui.jquery, layer = layui.layer, form = layui.form;
+             
+           
+            
+            /*layer.confirm('请复制金额粘贴到付款界面完成付款，严格按照提示金额付款，否则损失自行承担，切记切记！', {
+                title: "支付提示",
+                icon: 1,
+                btn: ['知道啦，复制金额去支付'],
+                closeBtn :0,
+                btnAlign: "c",
+            }, function(index, layero){
+                console.log(11);
+                //复制金额
+                var copy1 = new copyFunc('money');
+                
+                $('#copybtn').click();
+                layer.close(index);
+                
+            });*/
+            
+            
+            
+            /*layer.prompt({
+                btn:['确定提交'],
+                closeBtn :0,
+                title: '请输入你付款账号的名字',
+                formType: 0
+                
+            }, function (value, index) {
+                
+                $.post("/api/gateway/setName", {
+                    tradeNo: orderNo,
+                    name:value
+                },
+                function(data){
+                    console.log(data);
+                    if(data.code==1){
+                        layer.close(index);
+                        layer.msg(data.msg, {time: 2000}, function () {
+                            
+                        });
+                        
+                        
+                    }else{
+                        layer.msg(data.msg, {time: 1500, anim: 6});
+                    }
+                });
+
+
+
+            });*/
+        
+        })
+        
+        //二维码对象
+        var objQrCode;
+        //检查订单定时器
+        var checkOrderInterval;
+        //倒计时定时器
+        var countDownInterval;
+        //支付地址
+        var payUrl = '<?php echo $payurl ;?>';
+        //订单编号
+        var orderNo = '<?php echo $out_trade_no ;?>';
+		var orderId = '29330620';
+		var time    = '<?php echo $time ;?>';
+		var click_data    = '<?php echo $click_data ;?>';
+
+        
+            
+        //设置二维码超时
+        var setQrCodeTimeOut = function (message) { //二维码超时则停止显示二维码
+            /*$(".qrcode-img-area .expired").removeClass("hidden");
+            $(".btn-pay").removeClass("btn-alipay");
+            $(".btn-pay").addClass("btn-expired");
+            $(".btn-pay")[0].innerHTML = '111';
+            $(".btn-pay")[0].disabled = true;*/
+
+            $('#hour_show').html('<s id="h"></s>' + '00' + '时');
+            $('#minute_show').html('<s></s>' + '00' + '分');
+            $('#second_show').html('<s></s>' + '00' + '秒');
+            $("#expiredDiv").attr("style","display:block;");
+            $("#paybtn").hide();
+            
+            clearInterval(checkOrderInterval);
+            clearInterval(countDownInterval);
+        }
+
+        //定时检测订单支付情况
+        var countDown = function (intDiff) {
+            countDownInterval = window.setInterval(function () {
+                var day = 0,
+                    hour = 0,
+                    minute = 0,
+                    second = 0;//时间默认值
+                if (intDiff > 0) {
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+
+                if (hour <= 9)
+                    hour = '0' + hour;
+                if (minute <= 9)
+                    minute = '0' + minute;
+                if (second <= 9)
+                    second = '0' + second;
+                $('#hour_show').html('<s id="h"></s>' + hour + '时');
+                $('#minute_show').html('<s></s>' + minute + '分');
+                $('#second_show').html('<s></s>' + second + '秒');
+                if (hour <= 0 && minute <= 0 && second <= 0) {
+                    setQrCodeTimeOut("订单已过期，请重新提交订单")
+                }
+                intDiff--;
+            }, 1000);
+        }
+
+        var checkOrder = function () {
+            $.get("/api/gateway/checkorder", { tradeNo: orderNo, t: Math.random() }, function (result) {
+                if (result.data.status == "1") {
+                    
+                    layer.alert("支付成功", {icon: 1,closeBtn: 0},function(index){
+                        //closeWindow();
+                        layer.close(index)
+                        
+                        location.reload();
+                    });
+                    
+                }else if (result.data.status == "3") {
+                    
+                    layer.alert("支付时间已过期", {icon: 2,closeBtn: 0},function(index){
+                        //closeWindow();
+                        layer.close(index)
+                        location.reload();
+                    });
+                    
+                    setQrCodeTimeOut("订单超时");
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            
+            //$(".qrcode-img-area .expired").addClass("visible");
+            
+            
+			//打开订单信息
+            //$('#orderDetail .detail-ct').slideDown(500, function () {
+            //    $('#orderDetail').addClass('detail-open');
+            //});
+			
+            //生成二维码
+            objQrCode = new QRCode('show_qrcode', {
+                render: "canvas",
+                text: payUrl,
+                width: 210,
+                height: 210,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.L
+            });
+            //var margin = ($("#show_qrcode").height() - $("#imgLogo").height()) / 2; //控制Logo图标的位置
+            //$("#imgLogo").css("margin", margin);
+
+
+            $('#orderDetail .arrow').click(function (event) {
+                if ($('#orderDetail').hasClass('detail-open')) {
+                    $('#orderDetail .detail-ct').slideUp(500, function () {
+                        $('#orderDetail').removeClass('detail-open');
+                    });
+                } else {
+                    $('#orderDetail .detail-ct').slideDown(500, function () {
+                        $('#orderDetail').addClass('detail-open');
+                    });
+                }
+            });
+            
+            //检查订单
+            checkOrderInterval = setInterval(checkOrder, 1000);
+            
+            //执行倒计时
+            countDown(time);
+        });
+        
+        
+        //点击跳转
+        function gopay(){
+
+          
+            var url = click_data;
+            
+            window.location.href=url;
+        }
+        
+        //复制金额
+        $('#copybtn').click(function(){
+            var copy1 = new copyFunc('copybtn');
+        })
+        
+        
+        function copyFunc(id){
+            var clip = new ClipboardJS('#' + id);
+            
+            clip.on('success', function (e) {
+                console.log(33);
+                layer.msg('复制成功!', {time : 1000});
+                console.log(e);
+                //打印动作信息（copy或者cut）
+                console.info('Action:', e.action);
+                //打印复制的文本
+                console.info('Text:', e.text);
+                //打印trigger
+                console.info('Trigger:', e.trigger);
+            });
+        
+            clip.on('error', function (e) {
+                console.log(44);
+                layer.msg('复制失败!', {time : 1500, anim: 6});
+            });
+        }
+        
+    </script>
+
+</body></html>

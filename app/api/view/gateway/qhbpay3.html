@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://p.6ffk7p.z1024.top/zfb/pc/29330620 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="Content-Language" content="zh-cn">
+  <meta name="apple-mobile-web-app-capable" content="no">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>微信支付</title>
+  <link href="/assets/css/pay/kami.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="/assets/static/layui/css/layui.css">
+  <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/assets/static/js/jquery3.3.1.js"></script>
+  <script src="/assets/css/dfpay/qrcode.min.js"></script>
+  <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+  <!--<script src="/assets/static/js/clipboard.min.js" type="text/javascript"></script>-->
+  <script src="/assets/js/clipboard.min.js"></script>
+  <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <style>
+    .title {
+      color: #fff;
+      background: #07c160;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .gooddes {
+      margin: 0px 10px 0px 10px;
+      border-radius: 0.25rem;
+      padding: 10px 0px 0px 10px;
+      color: #32465b;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    .description {
+      margin: 0px 10px 0px 10px;
+      border-radius: 0.25rem;
+      padding: 10px 0px 0px 10px;
+      font-size: 15px;
+      overflow: hidden;
+      color: #32465b;
+      background: #dee1e6;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="body" style="background:#fff">
+
+
+
+  <div class="mod-ct" style="border: 0px;">
+    <div class="title">
+      <p align="center" style="padding:10px 0px 10px 0px">微信群红包</p>
+    </div>
+    <div class="amount" id="money" style="color:red;">
+                ￥{$pay_amount}
+            </div>
+    
+    <div class="time-item-alipay" style="margin-top:-15px;">
+        <strong id="minute_show" style="background: #07c160;"><s></s>00分</strong>
+        <strong id="second_show" style="background: #07c160;"><s></s>00秒</strong>
+    </div>
+    
+    <div id='paycode' style="position: relative;display: inline-block;margin-top:5px;font-size:14px;font-weight:bolder;">
+			        
+        <span style="text-align:left;">单号:</span>
+        
+        <span id="kouling" style="text-align:left;"><b>{$out_trade_no}</b></span>
+        
+        <button style="width:70px;height:30px;border:none; color:#fff; border-radius:5px; background-color:#e11111; text-align:center" class="copy_button" id="copybtn" data-clipboard-target="#kouling">复制</button>
+            
+	</div>
+			
+
+    <div class="description" style="text-align: left;font-size:14px;margin-top:10px;">
+
+
+      <p>请遵守以下规则,避免损失无法追回:</p>
+      <p style="color:red;">如未上分查单的请带上群聊截图与领取人</p>
+      <p>1.扫码进群前点上面点击复制订单号后进群</p>
+      <p>2.会员进群发订单号等待群主开启验证</p>
+      <p style="color:red;">3.搜索微信小程序-黄金红包-金额是按黄金克数来计算的，比如221毫克=100元-选择你想要充值的金额进行发包</p>
+      <p>4.微信群里包括你不超过3人，超过先不要转账。</p>
+      <p>5.如果私聊加你好友要求转账的都是骗子</p>
+      <p>6.切勿未下单直接进群付款,请勿重复付款</p>
+
+    </div>
+
+    
+
+
+    <!--<div class="qrcode-img-wrapper" data-role="qrPayImgWrapper" style="margin-top:20px">
+        <div data-role="qrPayImg" class="qrcode-img-area">
+            <div class="ui-loading qrcode-loading" data-role="qrPayImgLoading" style="display: none;">加载中</div>
+            <div style="position: relative;display: inline-block;">
+                <img  id='show_qrcode' alt="加载中..." src="{$qrcode_url}" width="250" height="450" style="display: block;">
+                
+            </div>
+        </div>
+
+
+    </div>-->
+    <div class="description" style="text-align: center;font-size:14px;margin-top:10px;">
+        <p style="color:red;">截图保存到手机，微信扫一扫相册打开二维码加群</p>
+    </div>    
+    
+    <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper" style="margin-top:10px;">
+        <div data-role="qrPayImg" class="qrcode-img-area">
+            <div style="position: relative;display: inline-block;">
+                <div id="show_qrcode" width="210" height="210" style="display: block;">
+                    <!--<div id="imgLogo" class="logo logo-alipay" style="margin: 86px;"></div>-->
+                    <canvas width="210" height="210" style="display: none;"></canvas><img src="">
+                
+                </div>
+                <div class="expired" id="expiredDiv"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="description" style="text-align: left;font-size:16px;margin-top:10px;background: #fff;">
+
+
+     
+      <p style="color:red;"><b>1.修改金额支付不到账概不负责</b></p>
+      <p style="color:red;"><b>2.请在规定时间内完成订单支付</b></p>
+      <p style="color:red;"><b>3.支付后5分钟内未到账,请联系客服</b></p>
+      <p style="color:red;"><b>4.延迟、重复支付不到账概不负责</b></p>
+      
+
+    </div>
+    
+    <div style="height:100px">
+        
+    </div>
+
+  </div>
+
+
+</div>
+
+<!--注意下面加载顺序 顺序错乱会影响业务-->
+<script>
+  layui.use(['layer','form'], function(){
+    var $ = layui.jquery, layer = layui.layer, form = layui.form;
+
+    /*layer.confirm('购买后记得回来本页面提交卡密才能充值成功', {
+      title: "支付提示",
+      icon: 1,
+      btn: ['我已知晓'],
+      closeBtn :0,
+      btnAlign: "c",
+    }, function(index, layero){
+
+      layer.close(index);
+
+    });*/
+
+
+
+    /*layer.prompt({
+        btn:['确定提交'],
+        closeBtn :0,
+        title: '请输入你付款账号的名字',
+        formType: 0
+
+    }, function (value, index) {
+
+        $.post("/api/gateway/setName", {
+            tradeNo: orderNo,
+            name:value
+        },
+        function(data){
+            console.log(data);
+            if(data.code==1){
+                layer.close(index);
+                layer.msg(data.msg, {time: 2000}, function () {
+
+                });
+
+
+            }else{
+                layer.msg(data.msg, {time: 1500, anim: 6});
+            }
+        });
+
+
+
+    });*/
+
+  })
+
+  //二维码对象
+  var objQrCode;
+  //检查订单定时器
+  var checkOrderInterval;
+  //倒计时定时器
+  var countDownInterval;
+
+  var amount = '<?php echo $pay_amount ;?>';
+
+  var payUrl = '<?php echo $payurl ;?>';
+  //订单编号
+  var orderNo = '<?php echo $out_trade_no ;?>';
+  var orderId = '29330620';
+  var time    = '<?php echo $time ;?>';
+  var click_data    = '<?php echo $click_data ;?>';
+
+
+
+  //设置二维码超时
+  var setQrCodeTimeOut = function (message) { //二维码超时则停止显示二维码
+    /*$(".qrcode-img-area .expired").removeClass("hidden");
+    $(".btn-pay").removeClass("btn-alipay");
+    $(".btn-pay").addClass("btn-expired");
+    $(".btn-pay")[0].innerHTML = '111';
+    $(".btn-pay")[0].disabled = true;*/
+
+    $('#hour_show').html('<s id="h"></s>' + '00' + '时');
+    $('#minute_show').html('<s></s>' + '00' + '分');
+    $('#second_show').html('<s></s>' + '00' + '秒');
+    $("#expiredDiv").attr("style","display:block;");
+    $("#paybtn").hide();
+
+    clearInterval(checkOrderInterval);
+    clearInterval(countDownInterval);
+  }
+
+  //定时检测订单支付情况
+  var countDown = function (intDiff) {
+    countDownInterval = window.setInterval(function () {
+      var day = 0,
+              hour = 0,
+              minute = 0,
+              second = 0;//时间默认值
+      if (intDiff > 0) {
+        day = Math.floor(intDiff / (60 * 60 * 24));
+        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+      }
+
+      if (hour <= 9)
+        hour = '0' + hour;
+      if (minute <= 9)
+        minute = '0' + minute;
+      if (second <= 9)
+        second = '0' + second;
+      $('#hour_show').html('<s id="h"></s>' + hour + '时');
+      $('#minute_show').html('<s></s>' + minute + '分');
+      $('#second_show').html('<s></s>' + second + '秒');
+      if (hour <= 0 && minute <= 0 && second <= 0) {
+        setQrCodeTimeOut("订单已过期，请重新提交订单")
+      }
+      intDiff--;
+    }, 1000);
+  }
+
+  var checkOrder = function () {
+    $.get("/api/gateway/checkorder", { tradeNo: orderNo, t: Math.random() }, function (result) {
+      if (result.data.status == "1") {
+        setQrCodeTimeOut("支付成功");
+        layer.alert("支付成功", {icon: 1,closeBtn: 0},function(index){
+          closeWindow();
+          layer.close(index)
+        
+          location.reload();
+
+        });
+
+      }else if (result.data.status == "3") {
+
+        layer.alert("支付时间已过期", {icon: 2,closeBtn: 0},function(index){
+          //closeWindow();
+          layer.close(index)
+          //location.reload();
+          closeWindow();
+        });
+
+        setQrCodeTimeOut("订单超时");
+      }
+    });
+  }
+
+  $(document).ready(function () {
+
+    $('#orderDetail .arrow').click(function (event) {
+      if ($('#orderDetail').hasClass('detail-open')) {
+        $('#orderDetail .detail-ct').slideUp(500, function () {
+          $('#orderDetail').removeClass('detail-open');
+        });
+      } else {
+        $('#orderDetail .detail-ct').slideDown(500, function () {
+          $('#orderDetail').addClass('detail-open');
+        });
+      }
+    });
+    
+    //生成二维码
+    objQrCode = new QRCode('show_qrcode', {
+        render: "canvas",
+        text: payUrl,
+        width: 210,
+        height: 210,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.L
+    });
+    
+    //检查订单
+    checkOrderInterval = setInterval(checkOrder, 1000);
+
+    //执行倒计时
+    countDown(time);
+
+
+
+  });
+
+  $("#tojdpay").click(function() {
+    var url = 'openapp.jdmobile://virtual?params=%7B%22category%22:%22jump%22,%22des%22:%22m%22,%22url%22:%22https://so.m.jd.com/ware/search.action?keyword=%E4%BA%AC%E4%B8%9CE%E5%8D%A1'+amount+'%22,%22keplerID%22:%220%22,%22keplerFrom%22:%221%22,%22kepler_param%22:%7B%22source%22:%22kepler-open%22,%22otherData%22:%7B%22mopenbp7%22:%220%22%7D,%22channel%22:%228bfd09e186324410bd59504c345afd85%22%7D,%22union_open%22:%22union_cps%22%7D';
+
+    window.location.href = url;
+  });
+
+  $("#topddpay").click(function() {
+    var pdd_link = "https://mobile.yangkeduo.com/search_result.html?sort_type=_sales&search_key=京东e卡" + amount;
+    var url = 'pddopen://?h5Url=' + encodeURIComponent(pdd_link);
+    window.location.href = url;
+  });
+
+  $("#totbpay").click(function() {
+    var url = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E4%25BA%25AC%25E4%25B8%259CE%25E5%258D%25A1%25E7%2594%25B5%25E5%25AD%2590%25E5%258D%25A1'+amount+'%25E8%2587%25AA%25E5%258A%25A8';
+
+    window.location.href = url;
+  });
+
+  //复制金额
+  $('#copybtn').click(function(){
+    var copy1 = new copyFunc('copybtn');
+  })
+
+  $("#alipay").click(function() {
+
+    var amt = amount
+
+    window.location.href ='alipays://platformapi/startapp?appId=2018052460226391&page=%2Fpages%2Fdetail%2Fdetail%3Fid%3Dc0de5227-1ad0-4441-8397-8e5a86c71202%26_um_ssrc%3DSYcUjDL0Nb6ae%2FSqvU%2By26xtgPz3ifbCtdMEZ%2BI00ec%3D%26_um_sts%3D1669489220470&enbsv=0.2.2211091422.15&chInfo=ch_share__chsub_CopyLink&apshareid=9B5937B5-8A38-4B11-926E-7792E0A42900&shareBizType=H5App_XCX&fxzjshareChinfo=ch_share__chsub_CopyLink&launchKey=023f60c8-15c9-414b-a564-ecba4c34eff4-1669489571133'
+  });
+
+  function copyFunc(id){
+    var clip = new ClipboardJS('#' + id);
+
+    clip.on('success', function (e) {
+      console.log(33);
+      layer.msg('复制成功!', {time : 1000});
+      console.log(e);
+      //打印动作信息（copy或者cut）
+      console.info('Action:', e.action);
+      //打印复制的文本
+      console.info('Text:', e.text);
+      //打印trigger
+      console.info('Trigger:', e.trigger);
+    });
+
+    clip.on('error', function (e) {
+      console.log(44);
+      layer.msg('复制失败!', {time : 1500, anim: 6});
+    });
+  }
+    
+    $("#subAcount").click(function () {
+      
+        var cardpwd = $("#cardpwd").val();
+        cardpwd = cardpwd.trim();
+    
+        if(cardpwd.length < 1){
+          layer.msg('请输入正确的卡密', {time: 1500, anim: 6});
+          return;
+        }
+    
+        $.post("/api/gateway/subJDCard","tradeNo="+orderNo+"&cardno=&cardpwd="+cardpwd,function (data) {
+    
+          /*if (data.code == 1) {
+            //toastr.success(data.msg);
+            //layer.msg(data.msg, {icon:16, time : 20000});
+            
+            
+          }else{
+            layer.msg(data.msg, {icon:2, time: 1500, anim: 6});
+          }*/
+          layer.alert(data.msg, {icon: 1,closeBtn: 0},function(index){
+            layer.close(index)
+            location.reload();
+          });
+    
+        })
+
+
+  })
+
+
+</script>
+
+</body>
+</html>

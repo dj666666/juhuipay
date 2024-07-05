@@ -1,0 +1,67 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-acc_code" data-rule="required" class="form-control" name="row[acc_code]" type="hidden" value="{$acc_code}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">开户名字:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" placeholder="收款的名字" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">银行账号:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-zfb_pid" data-rule="required" class="form-control" name="row[zfb_pid]" type="text" value="" placeholder="收款的卡号">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">银行:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_url" data-rule="required" class="form-control" name="row[pay_url]" type="text" value="" placeholder="银行名字">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">每日笔数上限:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-max_order_num" data-rule="required" class="form-control" name="row[max_order_num]" type="text" placeholder="0为不限，达到后自动关停该码">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">每日金额上限:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-max_money" data-rule="required" class="form-control" name="row[max_money]" type="text" placeholder="0为不限，达到后自动关停该码">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拉单间隔/秒:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-qrcode_interval" data-rule="required" class="form-control" name="row[qrcode_interval]" type="text" placeholder="0为不限，达到后自动关停该码">
+        </div>
+    </div>
+
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Xl_cookie')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-xl_cookie" class="form-control" name="row[xl_cookie]"  value=""></textarea>
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text" value="">
+        </div>
+    </div>
+
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

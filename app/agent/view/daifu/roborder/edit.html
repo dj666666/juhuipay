@@ -1,0 +1,190 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_id" data-rule="required" data-source="user.user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="{$row.user_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mer_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-mer_id" data-rule="required" data-source="mer/index" class="form-control selectpage" name="row[mer_id]" type="text" value="{$row.mer_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agent_id" data-rule="required" data-source="agent/index" class="form-control selectpage" name="row[agent_id]" type="text" value="{$row.agent_id}">
+        </div>
+    </div>-->
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Qrcode_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-qrcode_name" data-rule="required" readonly class="form-control" name="row[qrcode_name]" type="text" value="{$row.qrcode_name}">
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-amount" data-rule="required" class="form-control" readonly step="0.01" name="row[amount]" type="number" value="{$row.amount}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Out_trade_no')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-out_trade_no" data-rule="required" readonly class="form-control" name="row[out_trade_no]" type="text" value="{$row.out_trade_no}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Trade_no')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-trade_no" data-rule="" readonly class="form-control" name="row[trade_no]" type="text" value="{$row.trade_no}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Createtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-createtime" class="form-control datetimepicker" readonly data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[createtime]" type="text" value="{:$row.createtime?datetime($row.createtime):''}">
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Return_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-return_url" data-rule="required" class="form-control" name="row[return_url]" type="text" value="{$row.return_url}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Notify_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-notify_url" data-rule="required" class="form-control" name="row[notify_url]" type="text" value="{$row.notify_url}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Order_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-order_type" data-rule="required" class="form-control selectpicker" name="row[order_type]">
+                {foreach name="orderTypeList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.order_type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Return_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-return_type" data-rule="required" class="form-control" name="row[return_type]" type="text" value="{$row.return_type}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ip_address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ip_address" data-rule="required" class="form-control" name="row[ip_address]" type="text" value="{$row.ip_address}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Deal_ip_address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-deal_ip_address" class="form-control" name="row[deal_ip_address]" type="text" value="{$row.deal_ip_address}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_callback')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_callback" data-rule="required" class="form-control selectpicker" name="row[is_callback]">
+                {foreach name="isCallbackList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_callback"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Callback_count')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-callback_count" data-rule="required" class="form-control" name="row[callback_count]" type="number" value="{$row.callback_count}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Callback_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-callback_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[callback_time]" type="text" value="{:$row.callback_time?datetime($row.callback_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Callback_content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-callback_content" class="form-control" name="row[callback_content]" type="text" value="{$row.callback_content}">
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" readonly name="row[remark]" type="text" value="{$row.remark}">
+        </div>
+    </div>
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Deal_username')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-deal_username" class="form-control" name="row[deal_username]" type="text" value="{$row.deal_username}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Expire_time')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-expire_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[expire_time]" type="text" value="{:$row.expire_time?datetime($row.expire_time):''}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_url')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-pay_url" class="form-control" name="row[pay_url]" type="text" value="{$row.pay_url}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Is_resetorder')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--                        -->
+<!--            <select  id="c-is_resetorder" data-rule="required" class="form-control selectpicker" name="row[is_resetorder]">-->
+<!--                {foreach name="isResetorderList" item="vo"}-->
+<!--                    <option value="{$key}" {in name="key" value="$row.is_resetorder"}selected{/in}>{$vo}</option>-->
+<!--                {/foreach}-->
+<!--            </select>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_type')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-pay_type" class="form-control" name="row[pay_type]" type="text" value="{$row.pay_type}">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Zfb_code')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input id="c-zfb_code" class="form-control" name="row[zfb_code]" type="text" value="{$row.zfb_code}">-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {foreach name="statusList" item="vo"}
+                <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

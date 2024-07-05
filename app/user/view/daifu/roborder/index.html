@@ -1,0 +1,85 @@
+<div class="panel panel-default panel-intro">
+
+    <!--<div class="panel-heading">
+        {:build_heading(null,FALSE)}
+        <ul class="nav nav-tabs" data-field="status">
+            <li class="active"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="statusList" item="vo"}
+            <li><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}</a></li>
+            {/foreach}
+        </ul>
+    </div>-->
+
+    <!--<div class="panel-heading">
+
+    </div>
+            -->
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+
+                <div class="widget-body no-padding">
+
+
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <!--<a href="javascript:;" class="btn btn-success btn-add {:$auth->check('order/order/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+                        <a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled {:$auth->check('order/order/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('order/order/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-import {:$auth->check('order/order/import')?'':'hide'}" title="{:__('Import')}" id="btn-import-file" data-url="ajax/upload" data-mimetype="csv,xls,xlsx" data-multiple="false"><i class="fa fa-upload"></i> {:__('Import')}</a>
+
+                        <div class="dropdown btn-group {:$auth->check('order/order/multi')?'':'hide'}">
+                            <a class="btn btn-primary btn-more dropdown-toggle btn-disabled disabled" data-toggle="dropdown"><i class="fa fa-cog"></i> {:__('More')}</a>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=normal"><i class="fa fa-eye"></i> {:__('Set to normal')}</a></li>
+                                <li><a class="btn btn-link btn-multi btn-disabled disabled" href="javascript:;" data-params="status=hidden"><i class="fa fa-eye-slash"></i> {:__('Set to hidden')}</a></li>
+                            </ul>
+                        </div>-->
+
+                        <audio style="display: none" id="myaudio" src="__CDN__/assets/img/neworder.wav"  controls="controls"  preload="preload">不支持订单提示</audio>
+                        <audio style="display: none" id="applyaudio" src="__CDN__/assets/img/newapplyorder.mp3"  controls="controls"  preload="preload">不支持订单提示</audio>
+
+                        <!--<a href="javascript:;" class="btn btn-success" style="font-size:14px;">-->
+                        <!--    <span class="extend">-->
+                        <!--        总金额：<span id="allmoney"></span>-->
+                        <!--    </span>-->
+                        <!--</a>-->
+                        <!--<a href="javascript:;" class="btn btn-info" style="font-size:14px;">-->
+                        <!--    <span class="extend">-->
+                        <!--        总单数：<span id="allorder"></span>-->
+                        <!--    </span>-->
+                        <!--</a>-->
+                        <!--<a href="javascript:;" class="btn btn-success" style="font-size:14px;">-->
+                        <!--    <span class="extend">-->
+                        <!--        今日金额：<span id="todaymoney"></span>-->
+                        <!--    </span>-->
+                        <!--</a>-->
+                        <!--<a href="javascript:;" class="btn btn-info" style="font-size:14px;">-->
+                        <!--    <span class="extend">-->
+                        <!--        今日单数：<span id="todayorder"></span>-->
+                        <!--    </span>-->
+                        <!--</a>-->
+                        <!--<a href="javascript:;" class="btn btn-danger" style="font-size:14px;">
+                            <span class="extend">
+                                手续费：<span id="allfees"></span>
+                            </span>
+                        </a>-->
+
+
+
+
+                    </div>
+
+
+
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('order/order/edit')}"
+                           data-operate-del="{:$auth->check('order/order/del')}"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="panel-body">
+  <!-- <div class="row">
+       <div class="col-md-4 col-xs-4">
+           <div>系统订单号：{$row.out_trade_no}</div>
+           <div>商户订单号：{$row.trade_no}</div>
+
+       </div>
+       <div class="col-md-4 col-xs-4">.col-md-1</div>
+       <div class="col-md-4 col-xs-4">.col-md-1</div>
+   </div>-->
+  <table class="table table-striped" width="100%">
+    <tr>
+      <th>订单号</th>
+      <th>订单信息</th>
+    </tr>
+    <tr>
+      <td>系统订单号：{$row.out_trade_no}<br>
+        商户订单号：{$row.trade_no}
+      </td>
+      <td>
+
+        二维码别名：{$row.qrcode_name}<br>
+        备注：{$row.remark}<br>
+        收款备注：{$row.pay_remark}
+      </td>
+    </tr>
+    <tr>
+      <th>状态</th>
+      <th>IP</th>
+    </tr>
+    <tr>
+      <td>
+        订单类型：{$row.order_type ? 'Api' : '手动'}<br>
+        订单状态：{switch name="row.status" }
+        {case value="1"}支付成功{/case}
+        {case value="2"}等待支付{/case}
+        {case value="3"}支付失败{/case}
+        {default /}
+        {/switch}<br>
+
+        回调状态：{$row.is_callback ? '已回调' : '未回调'}<br>
+
+      </td>
+      <td>提交ip：{$row.ip_address}<br>
+        处理ip：{$row.deal_ip_address}<br>
+      </td>
+    </tr>
+    <tr>
+      <th>时间</th>
+      <th>回调</th>
+    </tr>
+    <tr>
+      <td>
+        创建时间：{$row.createtime}<br>
+        过期时间：{$row.expire_time}<br>
+        处理时间：{$row.ordertime}<br>
+        回调时间：{$row.callback_time}<br>
+      </td>
+      <td >
+        回调地址：{$row.notify_url}<br>
+        回调内容：{$row.callback_content}<br>
+        支付地址：{$row.pay_url}<br>
+      </td>
+
+    </tr>
+    <tr>
+        <th>迅雷</th>
+        <th>支付宝口令</th>
+    </tr>
+    <tr>
+        <td>
+            id        ：{$row.xl_gorderid}<br>
+            迅雷单号  ：{$row.xl_order_id}<br>
+            迅雷userid：{$row.xl_user_id}<br>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>
+            口令：{$row.zfb_code}<br>
+        </td>
+    </tr>
+    <tr>
+      <th>汇潮</th>
+
+    </tr>
+    <tr>
+      <td>
+        {$row.hc_pay_data}<br>
+
+      </td>
+       
+
+    </tr>
+  </table>
+</div>

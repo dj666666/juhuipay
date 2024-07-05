@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <button style="width: 200px;height: 50px" id="paybtn">微信点击支付</button>
+    <button style="width: 200px;height: 50px" id="paybtnzfb" onclick="gopay()">支付宝点击支付</button>
+</body>
+</html>
+<script>
+    $("#paybtn").click(function(){
+        onBridgeReady();
+    })
+    
+    function gopay(){
+        
+          
+            var url = 'alipays://platformapi/startApp?appId=20000125&orderSuffix=partner="2088801940275530"&seller_id="2088801940275530"&out_trade_no="791000123PP021230225131405000001"&subject="G买卖-虚拟点券不可退换,谨防诈骗!"&body="DQMP9100000000034011677302045261"&total_fee="199.88"&notify_url="http://payment.billing.sdo.com/alixpay/notify"&service="mobile.securitypay.pay"&payment_type="1"&_input_charset="utf-8"&it_b_pay="30m"&goods_detail="[{"goods_id":"791000123_9","goods_name":"G买卖-虚拟点券不可退换,谨防诈骗!","quantity":1,"price":1.00}]"&sign="lXUjnER6dD8iwC1IUGbsglebbcIXWYO4rLo13aTq%2Bp1cZ1vDGvcDaieZLDZAeK50MYx0xzO%2BsaKp559za1kRFZDwDmeNIE8Oy4wNnPt5glpAidxq%2FR%2BR%2BThT9KjKG32Nd0SUUSQogxknnF3eN6zE9EMhpquUNGlZYfVxPIiOw0s%3D"&sign_type="RSA""';
+            
+            var url = 'alipays://platformapi/startapp?appId=20000160&startMultApp=yes&chInfo=ch_ios_widget_custom_btn&sceneCode=KF_CHANGSHANG&shareUserId=2088732771679094&partnerId=ch_ios_widget&url=/www/pointSignIn.html?webview_options=ttb%3Dauto&adaptManufacturer=IOS&widgetBizScene=MEMBER_SIGN'
+            window.location.href=url;
+       
+    }
+    function onBridgeReady(){
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest', {
+                "appId":"wx2421b1c4370ec43b",     //公众号ID，由商户传入
+                "timeStamp":"1395712654",         //时间戳，自1970年以来的秒数
+                "nonceStr":"e61463f8efa94090b1f366cccfbbb444", //随机串
+                "package":"prepay_id=u802345jgfjsdfgsdg888",
+                "signType":"MD5",         //微信签名方式：
+                "paySign":"70EA570631E4BB79628FBCA90534C63FF7FADD89" //微信签名
+            },
+            function(res){
+                if(res.err_msg == "get_brand_wcpay_request:ok" ){
+                    // 使用以上方式判断前端返回,微信团队郑重提示：
+                    //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                }
+            });
+    }
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    }else{
+        onBridgeReady();
+    }
+</script>

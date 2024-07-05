@@ -1,0 +1,84 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-acc_code" data-rule="required" class="form-control" name="row[acc_code]" type="hidden" value="{$acc_code}">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">选择主体:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-zhuti_id" data-rule="required" class="form-control selectpicker" name="row[zhuti_id]">
+                {foreach name="zhuti_list" item="vo"}
+                <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="" placeholder="别名随便填用于你自己区分码">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">收款账号:</label>
+        <div class="col-xs-12 col-sm-8">
+          <input id="c-pay_url" class="form-control" name="row[pay_url]" type="text" value="" placeholder="页面上显示的收款账号">
+        </div>
+    </div>
+  
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">每日笔数上限:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-max_order_num" data-rule="required" class="form-control" name="row[max_order_num]" type="text" placeholder="0为不限，无论成功失败，达到该笔数后自动关停该码">
+        </div>
+    </div>-->
+    
+     <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">每日成功笔数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-success_order_num" data-rule="required" class="form-control" name="row[success_order_num]" type="text" placeholder="0为不限，成功笔数达到后自动关停该码">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">每日失败笔数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fail_order_num" data-rule="required" class="form-control" name="row[fail_order_num]" type="text" placeholder="0为不限，失败笔数达到后自动关停该码">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">每日成功金额:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-max_money" data-rule="required" class="form-control" name="row[max_money]" type="text" placeholder="0为不限，达到后自动关停该码">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">拉单间隔/秒:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-qrcode_interval" data-rule="required" class="form-control" name="row[qrcode_interval]" type="text" placeholder="拉单后下一单得等这个间隔才能再拉起，0为不限">
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text" value="">
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

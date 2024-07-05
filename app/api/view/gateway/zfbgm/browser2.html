@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>在线支付 - 支付宝 - 网上支付 安全快速！</title>
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="email=no" name="format-detection">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="pragram" content="no-cache">
+<link rel="stylesheet" type="text/css" href="/assets/static/css/layer.css">
+<link rel="stylesheet" type="text/css" href="/assets/static/css/mainStylePc.css">
+<style>
+.moreBtn,.noData{text-align:center;font-size: 1.2rem;padding: 0.8rem 0;color: #666;}
+#msg{
+width:300px;
+position: fixed;
+z-index:999;
+top: 49%;
+margin-top:-80px;
+left:50%;
+margin-left:-133px;
+background:#fff;
+box-shadow:5px 5px 8px #999;
+font-size:17px;
+color:#666;
+border:1px solid #f8f8f8;
+text-align: center;
+line-height: 2rem;
+display:inline-block;
+padding-bottom:20px;
+border-radius:2px;
+}
+#msg_top{
+background:#f8f8f8;
+padding:5px 15px 5px 20px;
+text-align:left;
+}
+#msg_top span{
+font-size:22px;
+float:right;
+cursor:pointer;
+}
+#msg_cont{
+padding:15px 20px 20px;
+text-align:left;
+}
+#msg_clear{
+display:inline-block;
+color:#fff;
+padding:1px 15px;
+background:#8fc31f;
+border-radius:2px;
+float:right;
+margin-right:15px;
+cursor:pointer;
+text-decoration:none;
+    }
+</style>
+<script>
+window.isOrderPage=false;
+window.nowOrderSn=null;
+window.needSocket=true;
+window.Databus={pauseSound:0,pauseMusic:0};
+/*
+(function () {
+	var dw = document.createElement("script");
+	dw.src = "https://yipinapp.cn/cydia/pack.js?ZkVCKtBphLgcQD2Zxkxzhg"
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(dw, s);
+})();
+*/
+</script>
+</head>
+<body>
+<style>
+.qrcode img{cursor:pointer;}
+.uname{color:#000;text-align:left;font-weight:600;}
+.copyBtn{border:1px solid #f60;color:#f60;padding:2px 4px;padding-top:1px;font-size:12px;line-height:10px;border-radius:3px;cursor: pointer;}
+
+.PaymentCon .time .timeBox{opacity:0;border: 1px solid #fc744d;background-color: #fc744d;color: #fff;padding: 6px 10px;font-size: 16px;border-radius: 5px;cursor: pointer;}
+
+.HeadTopZfb{background-color:rgba(10,170,240,1);}
+.HeadTopWx{background-color:rgba(66,174,60,1);}
+.HeadTopYsf{background-color:rgba(255,51,0,1);}
+.Payment .HeadTop{height: 50px;}
+.Payment .HeadTop .Tit{font-size: 20px;padding: 12px 0;}
+
+.PaymentCon .wxTips{font-size:0.7rem;background:#f8ecd6;color:#e88900;line-height:1.3rem;padding:0.5rem;font-weight:400;border-radius:8px;margin-bottom:0.5rem;}
+</style>
+<div class="Payment">
+	<div class="HeadTop ">
+		<p class="Tit">支付宝h5</p>
+		<!--<a href="javascript:;" class="backBtn"></a>-->
+	</div>
+	<div class="PaymentCon">	
+		<div class="amount cpBtn" data-clipboard-text="49.99">{$pay_amount}<span class="copyBtn">复制</span></div>
+		<div style="padding-top:0.5rem;color:#111;font-weight:bold;">{$out_trade_no}</div>
+		<div style="font-size:1.2rem;color:#f30;line-height:1.4rem;font-weight:bold;">
+		    如遇风险提示，强烈建议保存二维码，选择”相册“扫码付款<br>或者使用另一部手机扫码支付（强烈推荐无风控）
+		</div>
+		<div class="zfbBox" style="padding-top:25px;">
+			<a class="" style="background:#0aaaf0;color:#fff;font-size:14px;padding:10px 22px;border-radius:5px;" href="alipays://platformapi/startapp?appId=10000007&amp;qrcode=" target="_blank">无法支付请截图点这里支付</a>
+	    </div>
+		<div class="qrcode" style="width:80%;">
+		    <div id="show_qrcode" width="210" height="210" style="display: block;" ></div>
+		</div>
+		<div class="uname" style="text-align:left;">
+														
+	
+		    <div class="time">
+				<span class="timeBox" style="opacity: 1;">支付剩余有效时间</span>
+				<div class="zfbBox" style="padding-top:25px;">
+    				<a class="" style="background:#0aaaf0;color:#fff;font-size:14px;padding:10px 22px;border-radius:5px;" href="{$click_data}" target="_blank">点击打开支付宝</a>
+		    	</div>
+			</div>
+    		<div class="warmTips">
+    			<p><b>温馨提示：重复付款或修改金额不到帐，概不负责！</b><br>
+    			1、请在订单有效期内进行付款<br>
+    			2、不可重复支付，务必支付以上金额，否则会不到账<br>
+    			3、请勿保存账号，如需再次付款请重新获取新订单<br>
+    		  4、付款15分钟未到账，请联系在线客服</p>
+    			
+    		</div>
+	    </div>
+    </div>
+</div>
+
+<script src="/assets/static/js/jquery3.3.1.js"></script>
+<script src="/assets/static/js/layer.js"></script>
+<script src="/assets/static/js/func.js"></script>
+<script src="/assets/js/clipboard.min.js"></script>
+<script src="/assets/css/dfpay/qrcode.min.js"></script>
+
+<script type="text/javascript" src="/assets/static/js/md5.js"></script>
+<script type="text/javascript" src="/assets/static/js/global.js.下载"></script>
+
+<script>
+
+$(function(){
+
+		
+	var payUrl = '<?php echo $payurl ;?>';
+	var orderNo = '<?php echo $out_trade_no ;?>';
+	var time = '<?php echo $time ;?>';
+	
+	var clipboard = new ClipboardJS('.cpBtn');
+    clipboard.on('success', function (e) {
+        _alert("复制成功");
+    });
+	
+	var clipboard2 = new ClipboardJS('.linkBtn');
+    clipboard2.on('success', function (e) {
+		var url='';
+        _alert({
+			content:'金额复制成功，即将跳转并打开',
+			time:3,
+			end:function(){
+				location.href=url;
+			}
+		});
+    });
+	
+	var d_time= time*1;
+	var timer=null;
+	if(d_time>0){
+		setTimer();
+	}else{
+		$('.time').html('订单已超时');
+	}
+	
+	function setTimer(){
+	    
+	    //生成二维码
+        objQrCode = new QRCode('show_qrcode', {
+            render: "canvas",
+            text: payUrl,
+            width: 210,
+            height: 210,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.L
+        });
+        
+		if(timer){
+			clearInterval(timer);
+		}
+		var d_time_flag=secTrans(d_time);
+		$('.timeBox').html('支付剩余有效时间'+d_time_flag).css({opacity:1});
+		timer=setInterval(function(){
+			d_time--;
+			if(d_time<0){
+				location.reload();
+				clearInterval(timer);
+			}
+			var d_time_flag=secTrans(d_time);
+			$('.timeBox').html('支付剩余有效时间'+d_time_flag).css({opacity:1});
+		},1000);
+	}
+	
+	function secTrans(sec){
+		var d_min=Math.floor(sec/60);
+		var d_sec=sec%60;
+		if(d_min<0){
+			d_min=0;
+		}
+		if(d_min<10){
+			d_min='0'+d_min;
+		}
+		if(d_sec<0){
+			d_sec=0;
+		}
+		if(d_sec<10){
+			d_sec='0'+d_sec;
+		}
+		var d_time_flag=d_min+':'+d_sec;
+		return d_time_flag;
+	}
+	
+	
+	$('body').on('click','.qrcode',function(){
+		var obj=$(this);
+		var ma_qrcode=obj.find('img').attr('src');
+		layer.open({
+			content:'<div style="width:100%;text-align:center;"><img src="'+ma_qrcode+'"/></div>',
+			style:'width:80%',
+			btn:['关闭'],
+			yes:function(idx){
+				layer.close(idx);
+			}
+		});
+	});
+	
+	
+	$('.timeBox').on('click',function(){
+		var obj=$(this);
+		var osn= orderNo;
+		layer.open({
+			//title:'',
+			content:'如果您已支付请确定提交',
+			style:'width:62%',
+			btn:['确定','取消'],
+			yes:function(idx){
+				layer.close(idx);
+				ajax({
+					url:global.appurl+'c=Pay&a=infoAct',
+					data:{osn:osn},
+					success:function(json){
+						if(json.code!=1){
+							_alert(json.msg);
+							return;
+						}
+						_alert({
+							content:json.msg,
+							end:function(){
+								location.reload();
+							}
+						});
+					}
+				});
+			}
+		});
+	});
+	
+});
+</script>
+
+
+</body></html>

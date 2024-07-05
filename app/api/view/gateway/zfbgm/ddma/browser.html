@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付宝-在线-支付</title>
+</head>
+<body>
+    
+    <div id="alipayForm">
+        <a id='paybtn' href="{$inalipay_url}" style="color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 80%; border-radius: .5rem; font-size: 18px;background-color: #2ebfff; border: 1px solid #2ebfff;letter-spacing:normal;font-weight: normal"
+                class='action'>点击支付</a>
+    </div>
+    <script>
+        
+        window.onload = function() {
+            gopay();
+        };
+
+        
+        
+        function gopay(){
+            var url = '<?php echo $click_data ;?>';
+            
+            window.location.href=url;
+        }
+    </script>
+</body>
+</html>

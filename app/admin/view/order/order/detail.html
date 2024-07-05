@@ -1,0 +1,145 @@
+<style>
+    .panel-fieldlist .fieldlist dd ins {
+        width: 20%;
+    }
+
+    .panel-fieldlist .fieldlist dd input, .panel-fieldlist .fieldlist dd select {
+        width: 100%;
+    }
+
+    .list-group-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .groups {
+        display: flex;
+        align-items: center;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .list-group .list-group-item .label {
+        padding: 5px 10px;
+    }
+
+    .table-goods > thead > tr > th, .table-goods > tbody > tr > th, .table-goods > thead > tr > td, .table-goods > tbody > tr > td {
+        vertical-align: middle;
+    }
+
+    .order-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .print-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media print {
+        .electronics, .btn-print-page, .memo-operate {
+            display: none;
+        }
+    }
+    
+    li{
+        display:block;
+        white-space:normal;
+        word-break : break-all;
+        word-wrap: break-word;
+    }
+</style>
+<div id="app">
+    
+    <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <ul class="list-group">
+                        <!--<li class="list-group-item">所属商户：{$row.mer_username}</li>
+                        <li class="list-group-item">系统单号：{$row.out_trade_no}</li>-->
+                        <li class="list-group-item">商户单号：{$row.trade_no}</li>
+                        <li class="list-group-item">三方单号：{$row.xl_order_id}</li>
+                        <!--<li class="list-group-item">提单IP：{$row.ip_address}</li>-->
+                        <li class="list-group-item">通道：{$row.acc_name}（{$row.pay_type}）</li>
+                        <li class="list-group-item">收款码：{$row.qrcode_name}（{$row.qrcode_id}）</li>
+                        <li class="list-group-item">码uid：{$row.zfb_user_id}</li>
+                        <li class="list-group-item">主体：{$row.zhuti_name}</li>
+                    </ul>
+                </div>
+                <div class="col-xs-6">
+                    <ul class="list-group" style="white-space:nowrap;">
+                        <!--<li class="list-group-item order-status">
+                            <div>
+                                订单状态：
+                                {if $row['status'] == 1}
+                                    <span class="label label-success">支付成功</span>
+                                {elseif $row['status'] == 2}
+                                    <span class="label label-info">等待支付</span>
+                                {elseif $row['status'] == 3}
+                                    <span class="label label-danger">超时未付</span>
+                                {/if}
+                            </div>
+                            
+                        </li>
+                        <li class="list-group-item">
+                            <div>
+                                回调状态：
+                                {if $row['is_callback'] == 0}
+                                    <span class="label label-primary">未回调</span>
+                                {elseif $row['is_callback'] == 1}
+                                    <span class="label label-success">回调成功</span>
+                                {elseif $row['is_callback'] == 2}
+                                    <span class="label label-danger">回调失败</span>
+                                {/if}
+                            </div>
+                        </li>-->
+                        <li class="list-group-item">创建时间：{$row.createtime|date="Y-m-d H:i:s"}</li>
+                        <li class="list-group-item">处理时间：{notempty name="row.ordertime"}{$row.ordertime|date="Y-m-d H:i:s"}{/notempty}</li>
+                        <li class="list-group-item">回调时间：{notempty name="row.callback_time"}{$row.callback_time|date="Y-m-d H:i:s"}{/notempty}</li>
+                        <li class="list-group-item">处理账号：{$row.deal_username}</li>
+                        <!--<li class="list-group-item">订单备注：{$row.remark}</li>-->
+                        <li class="list-group-item">支付备注：{$row.pay_remark}</li>
+                        
+                        <li class="list-group-item">用户设备：{$row.device_type}</li>
+
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="list-group" style="white-space:nowrap;">
+                        
+                        <li class="list-group-item">支付地址：<a href="{$row.pay_url}" style="float:left;" target="_blank">{$row.pay_url}</a></li>
+                        <li class="list-group-item">回调地址：{$row.notify_url}</li>
+                        <li class="list-group-item">回调内容：{$row.callback_content}</li>
+                        <li class="list-group-item">信息1：{$row.xl_pay_data}</li>
+                        <li class="list-group-item">信息2：{$row.hc_pay_data}</li>
+                        <li class="list-group-item">信息3：{$row.hand_pay_data}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="logs">处理日志</label>
+                    <textarea id="logs" class="form-control" name="logs" rows="20" cols="70" style="font-size: 13px;">{$logs}</textarea>
+                </div>
+            </div>
+            
+        </div>
+    
+    
+</div>
+
+
+
+

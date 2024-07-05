@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://p.6ffk7p.z1024.top/zfb/pc/29330620 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="chrome-extension://dlcobpjiigpikoobohmabehhmhfoodbb/inpage.js" id="argent-x-extension" data-extension-id="dlcobpjiigpikoobohmabehhmhfoodbb"></script>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link href="/assets/css/dfpay/dfpay.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/assets/static/layui/css/layui.css">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+    <script src="/assets/css/dfpay/qrcode.min.js"></script>
+    <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+    <!--<script src="/assets/static/js/clipboard.min.js" type="text/javascript"></script>-->
+    <script src="/assets/js/clipboard.min.js"></script>
+    <!--<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>-->
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    
+    <style>
+    .title {
+      color: #fff;
+      background: #7d5b3f;
+      font-size: 18px;
+      font-weight: 550;
+    }
+
+    .gooddes {
+      margin: 0px 10px 0px 10px;
+      border-radius: 0.25rem;
+      padding: 10px 0px 0px 10px;
+      color: #32465b;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    .description {
+      margin: 0px 10px 0px 10px;
+      border-radius: 0.25rem;
+      padding: 10px 0px 0px 10px;
+      font-size: 15px;
+      overflow: hidden;
+      color: #32465b;
+      background: #fff;
+      border-radius: 5px;
+    }
+  </style>
+  
+</head>
+<body>
+<div class="body">
+    
+    <div class="description" style="text-align: center;color:red;">
+
+      <p>请按照下列步骤充值</p>
+      <p>即将唤醒支付宝付款,请稍等.</p>
+      <p>如果没有唤起支付，请点击下方立即支付</p>
+      <p>同一订单,请勿重复支付!!!</p>
+      <p>同一订单,请勿重复支付!!!</p>
+      <p>如手机未安装支付宝,请扫码付款.</p>
+      
+    </div>
+    
+    <div style="margin-top:100px;margin-left:15%;">
+        
+        <a id='paybtn'  href="javascript:;" onclick="gopay()"  style="color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 80%; height:30px;border-radius: .5rem; font-size: 18px;background-color: #1b76fb; border: 1px solid #1b76fb;letter-spacing:normal;font-weight: normal" class='action'>点击立即支付</a>
+        
+    </div>
+</div>
+<!--注意下面加载顺序 顺序错乱会影响业务-->
+<script>
+
+    //二维码对象
+    var objQrCode;
+    //检查订单定时器
+    var checkOrderInterval;
+    //倒计时定时器
+    var countDownInterval;
+    //支付地址
+    var payUrl = '<?php echo $payurl ;?>';
+    //订单编号
+    var orderNo = '<?php echo $out_trade_no ;?>';
+    var orderId = '29330620';
+    var time    = '<?php echo $time ;?>';
+    var click_data    = '<?php echo $inalipay_url ;?>';
+
+
+
+    //设置二维码超时
+    var setQrCodeTimeOut = function (message) { //二维码超时则停止显示二维码
+        /*$(".qrcode-img-area .expired").removeClass("hidden");
+        $(".btn-pay").removeClass("btn-alipay");
+        $(".btn-pay").addClass("btn-expired");
+        $(".btn-pay")[0].innerHTML = '111';
+        $(".btn-pay")[0].disabled = true;*/
+
+        $('#hour_show').html('<s id="h"></s>' + '00' + '时');
+        $('#minute_show').html('<s></s>' + '00' + '分');
+        $('#second_show').html('<s></s>' + '00' + '秒');
+        $("#expiredDiv").attr("style","display:block;");
+        $("#paybtn").hide();
+
+        clearInterval(checkOrderInterval);
+        clearInterval(countDownInterval);
+    }
+    
+    $(document).ready(function () {
+        
+        
+        gopay();
+        
+    });
+    
+
+
+    //点击跳转
+    function gopay(){
+        
+        // 调用支付宝JSAPI支付接口
+        AlipayJSBridge.call("tradePay", {
+            tradeNO: click_data
+        }, function(result) {
+            // 支付结果处理
+            if(result.resultCode == "9000"){
+                // 支付成功，处理相关逻辑
+                location.reload();
+            } else {
+                // 支付失败，处理相关逻辑
+            }
+        });
+
+    }
+    
+    
+    
+
+</script>
+
+</body>
+
+</html>

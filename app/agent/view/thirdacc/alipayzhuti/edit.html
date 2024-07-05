@@ -1,0 +1,51 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Appid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-appid" data-rule="required" class="form-control" name="row[appid]" type="text" value="{$row.appid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Product_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-product_id" class="form-control" name="row[product_id]" type="text" value="{$row.product_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Alipay_public_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-alipay_public_key" data-rule="required" class="form-control" name="row[alipay_public_key]" rows="6" cols="70">{$row.alipay_public_key}</textarea> 
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Private_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-alipay_private_key" data-rule="required" class="form-control" name="row[alipay_private_key]" rows="8" cols="70">{$row.alipay_private_key}</textarea> 
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <input  id="c-status" name="row[status]" type="hidden" value="{$row.status}">
+            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-status" data-yes="1" data-no="0" >
+                <i class="fa fa-toggle-on text-success {eq name="$row.status" value="0"}fa-flip-horizontal text-gray{/eq} fa-2x"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://p.6ffk7p.z1024.top/zfb/pc/29330620 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="UTF-8">
+    <title>支付宝收银台</title>
+    <link href="/assets/css/dfpay/dfpay.css" rel="stylesheet" media="screen">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+    <script src="/assets/css/dfpay/qrcode.min.js"></script>
+    
+</head>
+<body>
+    <div class="body">
+        <form id='topay' action="https://openapi.alipay.com/gateway.do" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="text" name="app_id"      value="{$remark.app_id}">
+            <input type="text" name="method"      value="{$remark.method}">
+            <input type="text" name="charset"     value="{$remark.charset}">
+            <input type="text" name="sign_type"   value="{$remark.sign_type}">
+            <input type="text" name="sign"        value="{$remark.sign}">
+            <input type="text" name="timestamp"   value="{$remark.timestamp}">
+            <input type="text" name="version"     value="{$remark.version}">
+            <input type="text" name="notify_url"  value="{$remark.notify_url}">
+            <input type="text" name="return_url"  value="{$remark.return_url}">
+            <input type="text" name="biz_content" value="{$remark.biz_content}">
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("topay").submit();
+    </script>
+
+</body>
+
+
+    
+</html>

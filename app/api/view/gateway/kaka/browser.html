@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://wg.bingfengzf.com/card?ids=945affdb-ff50-deee-2d76-204d82555c6a -->
+<html><script src="chrome-extension://dlcobpjiigpikoobohmabehhmhfoodbb/inpage.js" id="argent-x-extension" data-extension-id="dlcobpjiigpikoobohmabehhmhfoodbb"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>银行卡支付</title>
+    <link rel="stylesheet" href="/assets/static/kaka/base.css" media="all">
+    <link rel="stylesheet" href="/assets/static/kaka/style.css" media="all">
+    <script src="/assets/static/kaka/jquery-3.4.1.min.js"></script>
+    <script src="/assets/static/kaka/leftTime.min.js"></script>
+    <script src="/assets/static/kaka/config.js"></script>
+    <script src="/assets/static/kaka/clipboard.min.js"></script>
+      <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+
+    <script src="/assets/static/kaka/layer.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/assets/static/kaka/layer.css" id="layui_layer_skinlayercss" style="">
+    <link rel="stylesheet" href="/assets/static/kaka/layer(1).css" media="all">
+    <script src="/assets/static/kaka/jquery.qrcode.min.js"></script>
+</head>
+<body>
+<section class="cardCode" data-type="normal">
+    <div class="content">
+        <div id="TimeOutImg" style="text-align: center;display: none;"><img src="/assets/static/kaka/order.png" style="width:100%;">
+            <ul class="tips" style="text-align: left;">
+                <li>1、重复支付、修改金额、超时支付将不会上分</li>
+                <li>2、银行账户仅限本次使用，账户每次更换，如入款至过期账号，无法查收，本公司恕不负责</li>
+                <li>3、必须使用手机银行APP转账，100%成功率，（支持所有银行支付）</li>
+            </ul>
+        </div>
+        <div id="content">
+    
+            <h6>请在 <label id="showTime"></label> 内支付<label id="amount">{$pay_amount}</label>元</h6>
+            <div class="moneyWrap">
+                <h1 style="color: #0D7DD8;">￥ <label id="amount1" style="font-size: 60px;">{$pay_amount}</label></h1>
+                <h2 id="TimeOut">已失效</h2>
+            </div>
+            <div id="cardCloneWrap" style="margin-bottom: 0.35rem;font-size:0;">
+                <p style="font-size: 0.22rem;text-align: center; color:red"><strong>请在规定时间内按照上面金额支付，否则无法上分</strong></p>
+                <p style="font-size: 0.22rem;text-align: center;">请务必使用网站取款人<strong id="username">陈晓</strong>帐户进行转帐支付，否则无法上分</p>
+                <ul style="margin-bottom:0.2rem;">
+                    <li>
+                        收款姓名
+                        <button class="button" id="btn_card_name" data-clipboard-text="{$name}">复制</button>
+                        <p id="card_name">{$name}</p>
+                    </li>
+                    <li>
+                        收款账号
+                        <button class="button" id="btn_card_num" data-clipboard-text="6216351190000411629">复制</button>
+                        <p id="card_num">{$zfb_pid}</p>
+                    </li>
+                    <li>
+                        付款金额
+                        <button class="button" id="btn_amount2" data-clipboard-text="{$pay_amount}">复制</button>
+                        <p id="amount2">99.81</p>
+                    </li>
+                    <li>
+                        收款银行
+                        <p id="bank_name">{$payurl}</p>
+                    </li>
+                </ul>
+                <p style="font-size: 16px;text-align: center;"><strong>收款账户仅限本次使用，如入款至过期账号，无法查收，本公司恕不负责</strong></p>
+            </div>
+            <div>
+                <div id="pc">
+                    <h6>请用手机游览器"扫一扫"打开</h6>
+
+                    <div style="padding:10px;">
+                        <p class="appcode" id="appcode" style="text-align: center;">
+                            
+                        </p>
+                    </div>
+                </div>
+                <div style="position: relative;">
+                    <h5>温馨提示</h5>
+                    <ul class="tips">
+                        <li>为防黑资流入，仅限使用网站取款人 <span id="username" style="color: #f00;"></span> 的银行账户转账！！网站会员和付款人名字不一致的资金原路退回！！请知悉。</li>
+                        <li>1、本次充值不支持支付宝/微信/等第三方支付。</li>
+                        <li>2、重复支付/保存支付/修改金额/超时支付将无法上分！ </li>
+
+
+
+                    </ul>
+                </div>
+                <div id="phone" style="display: none;"><h6>点击下面银行名称，可直接进入App</h6>
+                <div><h6>&nbsp;</h6></div>
+                <div style="text-align: center;">
+                    <button class="bank" data-android-url="com.icbc.androidclient://" data-download-url="http://m.icbc.com.cn/icbc/客户端软件下载/开放式手机银行客户端下载/融e行手机客户端下载.htm" data-ios-url="com.icbc.iphoneclient://" href="javascript:;">工商银行</button>
+                    <button class="bank" data-android-url="ccbapp://main.ccb.com://" data-download-url="http://group.ccb.com/cn/v3/head_content/mbsapp.html" data-ios-url="ccbmobilebank://" href="javascript:;">建设银行</button>
+                    <button class="bank" data-android-url="bankabc://" data-download-url="http://mobile.abchina.com/download/clientDownload/zh_CN/MB_Index.aspx" data-ios-url="bankabc://" href="javascript:;" style="margin-right:0;">农业银行</button>
+                    <button class="bank" data-android-url="cmbmobilebank://" data-download-url="https://html.m.cmbchina.com/MobileHtml/Outreach/MHtmlGateway/CallappGateway.aspx?target=cmbmobilebank://cmbls/functionjump?action=gochannel&amp;channelname=home&amp;needlogin=false&amp;loginmode=d&amp;cmb_app_trans_parms_start=here&amp;appflag=0&amp;shorturl=https%3a%2f%2ft.cmbc" data-ios-url="cmbmobilebank://" href="javascript:;">招商银行</button>
+                    <button class="bank" data-android-url="bocmbciphone://h5://" data-download-url="https://ebsnew.boc.cn/bocphone/VuePhone/tools/downloadByQrcode/index.html" data-ios-url="bocmbciphone://" href="javascript:;">中国银行</button>
+                    <button class="bank" data-android-url="psbc://mainpage://" data-download-url="http://phone.psbc.com/" data-ios-url="psbcMobileBank://" href="javascript:;" style="margin-right:0;">邮储银行</button>
+                    <button class="bank" data-android-url="citicbankpay://unionPay:8899://" data-download-url="http://www.citicbank.com/common/awakeTo/" data-ios-url="citic/citicbank://" href="javascript:;">中信银行</button>
+                    <button class="bank" data-android-url="cibmb://" data-download-url="https://z.cib.com.cn/public/about-cib" data-ios-url="cibmb://" href="javascript:;">兴业银行</button>
+                    <button class="bank" data-android-url="com.pingan.paces.ccms://anydoor://" data-download-url="https://bank-static.pingan.com.cn/ibank/zhida-superbank/ulink-superbank.html" data-ios-url="paebqw/paesuperbank://" href="javascript:;" style="margin-right:0;">平安银行</button>
+
+                    <button class="bank" data-android-url="bocom://" data-download-url="https://wap.95559.com.cn/mobs/main.html#downloadApp?t=2" data-ios-url="bocom://" href="javascript:;">交通银行</button>
+                    <button class="bank" data-android-url="com.cebbank.ebank://" data-download-url="https://a.app.qq.com/o/simple.jsp?pkgname=com.cebbank.mobile.cemb&amp;fromcase=40003" data-ios-url="com.cebbank.ebank://" href="javascript:;">光大银行</button>
+                    <button class="bank" data-android-url="hxbmb://mb5://" data-download-url="https://wap.hxb.com.cn/wap/sjbsy/index.shtml" data-ios-url="hxbmb://" href="javascript:;" style="margin-right:0;">华夏银行</button>
+
+                    <button class="bank" data-android-url="cmbc://qd.mbank://" data-download-url="https://m1.cmbc.com.cn/CMBC_MBServer/svt/wapdownload.shtml" data-ios-url="com.cmbc.cn.iphone://" href="javascript:;">民生银行</button>
+                    <button class="bank" data-android-url="cgb://lua/openxml://" data-download-url="https://a.app.qq.com/o/simple.jsp?pkgname=com.cgbchina.xpt" data-ios-url="cgb/cgbMobileHuidu://" href="javascript:;">广发银行</button>
+                    <button class="bank" data-android-url="spdbbank://wap.spdb.com.cn://" data-download-url="http://ebank.spdb.com.cn/net/preMClientDownload.jsp" data-ios-url="spdbbank://" href="javascript:;" style="margin-right:0;">浦东发展</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+.layui-input {
+    
+    font-size:30px;
+}
+</style>
+<div id="form_real_name" style="font-size: 20px; display: none;" class="layui-layer-wrap">
+    <span id="error_mag" style="color: #f56d6d"></span>
+    <input type="text" name="real_name" style="width:100%;" class="layui-input" lay-verify="required" placeholder="请输入付款人姓名" style="">
+</div>
+
+
+<script type="text/javascript">
+
+    var amount = '<?php echo $amount ;?>';
+    var payamount = '<?php echo $pay_amount ;?>';
+    
+    var payUrl = '<?php echo $payurl ;?>';
+    //订单编号
+    var orderNo = '<?php echo $out_trade_no ;?>';
+    var orderId = '29330620';
+    var time    = '<?php echo $time ;?>';
+    var click_data    = '<?php echo $click_data ;?>';
+    var expire_time    = '<?php echo $expire_time ;?>';
+  
+    $(function() {
+
+        createqr();
+        var ids = orderNo;
+        /*layui.use(['layer','form'], function(){
+            var $ = layui.jquery, layer = layui.layer, form = layui.form;
+            
+            layer.prompt({
+                btn:['确定提交'],
+                closeBtn :0,
+                title: '请输入你付款账号的名字',
+                formType: 0
+        
+            }, function (value, index) {
+        
+                $.post("/api/gateway/setName", {
+                    tradeNo: orderNo,
+                    name:value
+                },
+                function(data){
+                    console.log(data);
+                    if(data.code==1){
+                        layer.close(index);
+                        layer.msg(data.msg, {time: 2000}, function () {
+        
+                        });
+        
+        
+                    }else{
+                        layer.msg(data.msg, {time: 1500, anim: 6});
+                    }
+                });
+        
+        
+        
+            });
+            
+        });*/
+        layer.ready(function () {
+            layer.open({
+                type:1,
+                closeBtn:0,
+                content: $('#form_real_name'),
+                title:'请输入付款人姓名',
+                btn:['确定'],
+                yes: function(index, layero){
+                    real_name = $('input[name="real_name"]').val().trim();
+                    if(real_name == ''){ 
+                        layer.msg('请输入付款人姓名');
+                        return false;
+                    }
+                    var re=/^[\u00b7\u2022\u4e00-\u9fa5]+$/;
+                    if(!re.test(real_name)){
+                        layer.msg('付款人姓名必须是中文');
+                        return false;
+                    }
+                    
+                    $.post("/api/gateway/setName", {
+                        tradeNo: orderNo,
+                        name:real_name
+                    },
+                    function(data){
+                        
+                        if(data.code==1){
+                            layer.close(index);
+                            
+                            alert("请严格按照出单 金额精确 到小数点，否则不会上分！！！<BR/>\r\n请使用最新出现的银行卡信息进行支付,如保存原有卡号支付,导致无法上分,概不负责");
+            
+            
+                        }else{
+                            layer.msg(data.msg, {time: 1500, anim: 6});
+                        }
+                    });
+                    
+                    
+                }
+    
+            });
+            
+            
+    
+        })
+        var Pay = function() {}
+        Pay.prototype.init = function() {
+            var clipboard = new ClipboardJS('.button');
+            clipboard.on('success', function(e) {
+                layer.msg("复制成功");
+                e.clearSelection();
+            });
+            clipboard.on('error', function() {
+                layer.msg("复制失败");
+            });
+        };
+        var pay = new Pay();
+        pay.init()
+        if (IsNullOrEmpty(ids) == false) {
+            document.getElementById('TimeOutImg').style.display = "block";
+            document.getElementById('content').style.display = "none";
+        } else {
+            
+            $(function() {
+                //日期倒计时
+                $.leftTime(expire_time, function(d) {
+                    if (d.status) {
+                        $("#showTime").html(d.m + "分" + d.s + "秒");
+                    } else {
+                        $("#showTime").html("00分00秒");
+                        $("#TimeOut").show();
+                        
+                        document.getElementById('TimeOutImg').style.display = "block";
+                        document.getElementById('content').style.display = "none";
+                    }
+                });
+            });
+            
+        }
+
+    });
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+
+    function check(){
+        $.ajax({
+            type:"GET",
+            url:"/api/gateway/checkorder?tradeNo="+ orderNo,
+            dataType:"json",
+            success:function(data){
+                if(data.data.status == "1") {
+                    layer.alert("支付成功", {icon: 1,closeBtn: 0},function(index){
+                      window.close();
+                      layer.close(index)
+                    });
+                    /*var dialog_ok2 = document.getElementById("dialog_ok2");
+                    dialog_ok2.onclick = function() {
+                        // if (data.url != null){
+                        //     location.href = data.url;
+                        // }else {
+                        window.close();
+                        // }
+                    };*/
+
+                }
+            },
+            error:function(res){
+                alert(res.status);
+            }
+        });
+    }
+    window.setInterval(check, 5000); //每5秒执行一次
+    // 下载
+    function downapp() {
+        $(document).on('click', '.bank', function() {
+            var downloadUrl = $(this).attr('data-download-url'),
+                    androidUrl = $(this).attr('data-android-url'),
+                    iosUrl = $(this).attr('data-ios-url'),
+                    bankName = $(this).html();
+            layer.confirm(bankName + '已安装选择“前往App”，未安装选择“前往安装”', {
+                        btn: ['前往App', '前往安装']
+                    },
+                    function() {
+                        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                            window.location = iosUrl;
+                        } else if (navigator.userAgent.match(/android/i)) {
+                            window.location = androidUrl;
+                        }
+                        layer.closeAll();
+                    },
+                    function() {
+                        window.open(downloadUrl);
+                        layer.closeAll();
+                    }
+            );
+        });
+    }
+    //创建码
+    function createqr() {
+        if (IsPC()) {
+            $("#phone").hide();
+            $('#pc').show();
+            jQuery('#appcode').qrcode({
+                render: "canvas",
+                text: window.location.href,
+                width: 180,
+                height: 180,
+                background: "#ffffff",
+                foreground: "#000000"
+            });
+        } else {
+            $("#phone").show();
+            $('#pc').hide();
+            downapp();
+        }
+
+    }
+
+    function IsNullOrEmpty(value) {
+        //正则表达式用于判斷字符串是否全部由空格或换行符组成
+        var reg = /^\s*$/
+        //返回值为true表示不是空字符串
+        return (value != null && value != undefined && !reg.test(value))
+    }
+</script>
+<div><style type="text/css">.nbaMask { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); }                                                                                                                                                                       .nbaMaskTransparent { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; }                                                                                                                                                                                            .nbaDialog { position: fixed; z-index: 5000; width: 80%;  top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: #fff; text-align: center; border-radius: 8px; overflow: hidden; opacity: 1; color: white; }.nbaDialog .nbaDialogHd { padding: .2rem .27rem .08rem .27rem; }                                                                                                                                                                                                                         .nbaDialog .nbaDialogHd .nbaDialogTitle { font-size: 0.27rem; font-weight: 400; }                                                                                                                                                                                                           .nbaDialog .nbaDialogBd { padding: 0 .27rem; font-size:  0.26rem; line-height: 1.5; word-wrap: break-word; word-break: break-all; color: #000000; }                                                                                                                                          .nbaDialog .nbaDialogFt { position: relative; line-height: 0.8rem; font-size: 0.3rem; display: -webkit-box; display: -webkit-flex; display: flex; }                                                                                                                                          .nbaDialog .nbaDialogFt:after { content: " "; position: absolute; left: 0; top: 0; right: 0; height: 1px; border-top: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); }               .nbaDialog .nbaDialogBtn { display: block; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; color: #09BB07; text-decoration: none; -webkit-tap-highlight-color: transparent; position: relative; margin-bottom: 0; }                                                                       .nbaDialog .nbaDialogBtn:after { content: " "; position: absolute; left: 0; top: 0; width: 1px; bottom: 0; border-left: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleX(0.5); transform: scaleX(0.5); }             .nbaDialog a { text-decoration: none; -webkit-tap-highlight-color: transparent; }</style><div id="dialogs2" style="display: none;"><div class="nbaMask"></div><div class="nbaDialog">	<div class="nbaDialogHd">		<strong class="nbaDialogTitle"></strong>	</div>	<div class="nbaDialogBd" id="dialog_msg2">请严格按照出单 金额精确 到小数点，否则不会上分！！！<br>
+请使用最新出现的银行卡信息进行支付,如保存原有卡号支付,导致无法上分,概不负责</div>	<div class="nbaDialogHd">		<strong class="nbaDialogTitle"></strong>	</div>	<div class="nbaDialogFt">		<a href="javascript:;" class="nbaDialogBtn nbaDialogBtnPrimary" id="dialog_ok2">确定</a>	</div></div></div></div></body></html>

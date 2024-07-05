@@ -1,0 +1,30 @@
+<div class="row" style="margin-top:15px;">
+    <div class="col-xs-12">
+        <div class="panel panel-default panel-intro panel-statistics">
+            <div class="panel-body">
+                <h4>收支趋势图</h4><br>
+                <div id="datefilter">
+                    <form id="form1" action="" role="form" novalidate class="form-inline">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh"><i class="fa fa-refresh"></i></a>
+                        <a href="javascript:;" class="btn btn-success btn-filter">{:__('Last 30 Days')}</a>
+                        <a href="javascript:;" class="btn btn-success btn-filter">{:__('Last month')}</a>
+                        <a href="javascript:;" class="btn btn-success btn-filter">{:__('This month')}</a>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input type="text" class="form-control input-inline datetimerange" data-type="order" placeholder="指定日期" style="width:270px;"/>
+                        </div>
+                        <a href="javascript:;" class="btn btn-default" style="font-size:14px;color:dodgerblue;">
+                            <i class="fa fa-rmb"></i>
+                            <span class="extend">
+                                总订单金额：<span id="all_income">{$extend.allIncome}</span>
+                                <!--总支出：<span id="all_pay">{$extend.allPay}</span>
+                                结余：<span id="all_balance">{$extend.allBalance}</span>-->
+                            </span>
+                        </a>
+                    </form>
+                </div>
+                <div id="echarts1" style="height:400px;width:100%;margin-top:15px;"></div>
+            </div>
+        </div>
+    </div>
+</div>

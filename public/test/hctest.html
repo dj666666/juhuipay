@@ -1,0 +1,60 @@
+
+
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+
+<html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>接口网关测试</title>
+    <meta name="description" content="DingJie">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+
+   
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="/assets/js/require.js"></script>
+    <script src="/assets/js/md5.js"></script>
+	
+	<style>
+    
+      .layui-tab-item{
+        font-size:15px;
+      }
+  	
+    </style>
+    
+</head>
+<body>
+<div class="container">
+	
+	<h1 align = 'center'>测试demo</h1>
+
+	<form action="https://paygw.yemadai.com/scan/merchant/dopay" method="post" class="basic-grey">
+
+		<div class="form-group ">
+			<h3>参数</h3>
+			<input type="text" class="form-control" name="requestDomain"  id="requestDomain" placeholder="参数">
+		</div>
+		
+		<button type="submit" id="sub"  style="width:100%;height:50px;margin-top:50px;">发起支付</button>
+
+	</form>
+	
+	
+
+		
+</div>
+
+
+</body>
+
+</html>

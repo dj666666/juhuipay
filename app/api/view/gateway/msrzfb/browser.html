@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://p.6ffk7p.z1024.top/zfb/pc/29330620 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>支付宝收银台</title>
+    <link href="/assets/css/dfpay/dfpay.css" rel="stylesheet" media="screen">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+
+    <script src="/assets/css/dfpay/qrcode.min.js"></script>
+    
+</head>
+<body>
+    <div class="body">
+        <!--<h1 class="mod-title">
+            <span class="ico_log ico-zfbsm"></span>
+        </h1>-->
+        <div class="mod-ct">
+            
+            <div class="amount" id="money" style="color:red">￥{$pay_amount}</div>
+			<div class="time-item" id="msg">
+			    <h3 >请按照以上金额进行付款，否则无法到账</h3>
+			    <h3 style="color: red;">请勿重复付款！不到账联系客服！</h3>
+			</div>
+            <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
+                <div data-role="qrPayImg" class="qrcode-img-area">
+                    <div style="position: relative;display: inline-block;">
+                        <div id="show_qrcode" width="210" height="210" style="display: block;">
+                            <div id="imgLogo" class="logo logo-alipay" style="margin: 86px;"></div>
+                        <canvas width="210" height="210" style="display: none;"></canvas><img src=""></div>
+                        <div class="expired" id="expiredDiv"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-item-alipay">
+                <strong id="hour_show"><s id="h"></s>00时</strong>
+                <strong id="minute_show"><s></s>00分</strong>
+                <strong id="second_show"><s></s>00秒</strong>
+            </div>
+
+            <div class="pay_btn" style="padding-top:15px">
+                <!--<a id="btnDL" href="javascript:;" onclick="gopay()" class="btn btn-primary">请点击立即支付</a>-->
+                <!--<button type="button" id="paybtn" onclick="gopay()" class="btn btn-success btn-lg btn-block" style="width:100%;background-color:#2ebfff;color:white;font-size:18px">点击启动支付宝支付</button>-->
+                <a id='paybtn' href="{$click_data}" style="color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 80%; border-radius: .5rem; font-size: 18px;background-color: #2ebfff; border: 1px solid #2ebfff;letter-spacing:normal;font-weight: normal"
+                class='action'>启动支付宝(推荐)</a>
+            </div>
+            <div class="tip">
+                <div class="ico-scan-alipay"></div>
+                <div class="tip-text">
+                    <!--<p style="color: red;"><b>或者截图后使用支付宝扫码完成支付</b></p>-->
+                    <p>如无法跳转截图使用支付宝</p>
+                    <p >扫描二维码完成支付</p>
+                    <!--<p style="color: red;">扫描二维码付</p>
+                    <p style="color: red;"><b> 如遇 “已停止访问该网页” 请截图扫码完成支付</b></p>-->
+                </div>
+            </div>
+
+            <div class="detail detail-ct detail-open" id="orderDetail">
+                <dl class="detail-ct" id="desc" style="overflow: hidden; display: block;">
+                    <dt>金额：</dt>
+                    <dd>{$pay_amount}</dd>
+                    <dt>订单：</dt>
+                    <dd>{$out_trade_no}</dd>
+                    <dt>创建时间：</dt>
+                    <dd>{$create_time}</dd>
+                    <dt></dt>
+                    <dd id="orderStatus"></dd>
+                </dl>
+
+                <a href="javascript:void(0)" class="arrow"><i class="ico-arrow-alipay"></i></a>
+            </div>
+
+            <div class="tip-text">
+            </div>
+
+
+        </div>
+        <div class="foot">
+            <div class="inner">
+                <p>手机用户可保存上方二维码到手机中</p>
+                <p>在支付宝扫码扫一扫中选择“相册”即可</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="copyRight">
+
+    </div>
+    <!--注意下面加载顺序 顺序错乱会影响业务-->
+    <script>
+        //二维码对象
+        var objQrCode;
+        //检查订单定时器
+        var checkOrderInterval;
+        //倒计时定时器
+        var countDownInterval;
+        //支付地址
+        var payUrl = '<?php echo $payurl ;?>';
+        //订单编号
+        var orderNo = '<?php echo $out_trade_no ;?>';
+		var orderId = '29330620';
+		var time    = '<?php echo $time ;?>';
+		var click_data    = '<?php echo $click_data ;?>';
+
+        //设置二维码超时
+        var setQrCodeTimeOut = function (message) { //二维码超时则停止显示二维码
+            /*$(".qrcode-img-area .expired").removeClass("hidden");
+            $(".btn-pay").removeClass("btn-alipay");
+            $(".btn-pay").addClass("btn-expired");
+            $(".btn-pay")[0].innerHTML = '111';
+            $(".btn-pay")[0].disabled = true;*/
+
+            $('#hour_show').html('<s id="h"></s>' + '00' + '时');
+            $('#minute_show').html('<s></s>' + '00' + '分');
+            $('#second_show').html('<s></s>' + '00' + '秒');
+            $("#expiredDiv").attr("style","display:block;");
+            $("#paybtn").hide();
+            
+            clearInterval(checkOrderInterval);
+            clearInterval(countDownInterval);
+        }
+
+        //定时检测订单支付情况
+        var countDown = function (intDiff) {
+            countDownInterval = window.setInterval(function () {
+                var day = 0,
+                    hour = 0,
+                    minute = 0,
+                    second = 0;//时间默认值
+                if (intDiff > 0) {
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+
+                if (hour <= 9)
+                    hour = '0' + hour;
+                if (minute <= 9)
+                    minute = '0' + minute;
+                if (second <= 9)
+                    second = '0' + second;
+                $('#hour_show').html('<s id="h"></s>' + hour + '时');
+                $('#minute_show').html('<s></s>' + minute + '分');
+                $('#second_show').html('<s></s>' + second + '秒');
+                if (hour <= 0 && minute <= 0 && second <= 0) {
+                    setQrCodeTimeOut("订单已过期，请重新提交订单")
+                }
+                intDiff--;
+            }, 1000);
+        }
+
+        var checkOrder = function () {
+            $.get("/api/gateway/checkorder", { tradeNo: orderNo, t: Math.random() }, function (result) {
+                if (result.data.status == "2") {
+                    //未支付
+                    $("#orderStatus").innerHTML = "等待支付";
+                    
+                }else if (result.data.status == "5") {
+                    //订单过期
+                    $("#orderStatus").innerHTML = "订单不存在";
+                    
+                    setQrCodeTimeOut("订单不存在");
+                }else if (result.data.status == "3") {
+                    //订单过期
+                    $("#orderStatus").innerHTML = "订单过期";
+                    setQrCodeTimeOut("订单已过期，请重新提交订单");
+                    
+                }else {
+                    //支付成功
+                    clearInterval(checkOrderInterval);
+                    clearInterval(countDownInterval);
+                    
+                    location.reload();
+
+                    
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            
+            //$(".qrcode-img-area .expired").addClass("visible");
+            
+            
+			//打开订单信息
+            //$('#orderDetail .detail-ct').slideDown(500, function () {
+            //    $('#orderDetail').addClass('detail-open');
+            //});
+			
+            //生成二维码
+            objQrCode = new QRCode('show_qrcode', {
+                render: "canvas",
+                text: payUrl,
+                width: 210,
+                height: 210,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.L
+            });
+            //var margin = ($("#show_qrcode").height() - $("#imgLogo").height()) / 2; //控制Logo图标的位置
+            //$("#imgLogo").css("margin", margin);
+
+
+            $('#orderDetail .arrow').click(function (event) {
+                if ($('#orderDetail').hasClass('detail-open')) {
+                    $('#orderDetail .detail-ct').slideUp(500, function () {
+                        $('#orderDetail').removeClass('detail-open');
+                    });
+                } else {
+                    $('#orderDetail .detail-ct').slideDown(500, function () {
+                        $('#orderDetail').addClass('detail-open');
+                    });
+                }
+            });
+            //执行倒计时
+            countDown(time);
+            //检查订单
+            checkOrderInterval = setInterval(checkOrder, 1000);
+        });
+        
+        
+        /*//点击跳转
+        function gopay(){
+
+          
+            var url = click_data;
+            
+            window.location.href=url;
+        }*/
+    
+    </script>
+
+</body></html>

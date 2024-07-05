@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html style="font-size: 164.133px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>支付宝</title>
+    <meta name="description" content="hello site">
+    <meta name="keywords" content="site">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="data-aspm" content="a1179">
+    <link rel="canonical" href="https://www.alipay.com/">
+    <meta name="keywords" content="支付宝,电子支付/网上支付/安全支付/手机支付,安全购物/网络购物付款/付款/收款,水电煤缴费/信用卡还款/AA收款,支付宝网站">
+    <meta name="description" content="支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用。">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <script>!function (e) {
+        function t(n) {
+            if (i[n]) return i[n].exports;
+            var r = i[n] = {exports: {}, id: n, loaded: !1};
+            return e[n].call(r.exports, r, r.exports, t), r.loaded = !0, r.exports
+        }
+
+        var i = {};
+        return t.m = e, t.c = i, t.p = "", t(0)
+    }([function (e, t) {
+        "use strict";
+        Object.defineProperty(t, "__esModule", {value: !0});
+        var i = window;
+        t["default"] = i.vl = function (e, t) {
+            var n = e || 100, r = t || 750, a = i.document, d = navigator.userAgent,
+                o = d.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i), l = d.match(/U3\/((\d+|\.){5,})/i),
+                s = l && parseInt(l[1].split(".").join(""), 10) >= 80, u = a.documentElement, c = 1;
+            if (o && o[1] > 534 || s) {
+                u.style.fontSize = n + "px";
+                var p = a.createElement("div");
+                p.setAttribute("style", "width: 1rem;display:none"), u.appendChild(p);
+                var m = i.getComputedStyle(p).width;
+                if (u.removeChild(p), m !== u.style.fontSize) {
+                    var v = parseInt(m, 10);
+                    c = 100 / v
+                }
+            }
+            var f = a.querySelector('meta[name="viewport"]');
+            f || (f = a.createElement("meta"), f.setAttribute("name", "viewport"), a.head.appendChild(f)), f.setAttribute("content", "width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1");
+            var h = function () {
+                u.style.fontSize = n / r * u.clientWidth * c + "px"
+            };
+            h(), i.addEventListener("resize", h)
+        }, e.exports = t["default"]
+    }]);
+    vl(100, 750);</script>
+    <script>
+        window._to = {autoStart: false};
+    </script>
+    <script src="/assets/static/js/zepto.js"></script>
+    <!-- spm埋点 @予凝 -->
+
+    <link rel="stylesheet" href="/assets/static/css/index-6678e.css">
+<style type="text/css">#aliDebugPop{position:fixed;right:0;bottom:0;width:4.5rem;height:7rem}#aliDebugPop #aliDebugPopbox{position:relative;width:100%;height:100%;overflow-x:hidden;overflow-y:auto;border-radius:.1rem;background:rgba(0,0,0,.5);color:#fff}#aliDebugPop #aliDebugPopbox ul{width:100%;height:100%}#aliDebugPop #aliDebugPopbox ul li{line-height:.3rem;border-bottom:1px dotted hsla(0,0%,100%,.6);background:rgba(0,0,0,.5);color:hsla(0,0%,100%,.9);text-align:left;padding:.1rem .05rem;word-break:break-all}#aliDebugPop #aliDebugPopbox ul li:last-child{border-bottom:none}#aliDebugPop .ali-debug-button{position:absolute;z-index:1000;right:0;height:.4rem;line-height:.4rem;width:.8rem;top:-.43rem;color:hsla(0,0%,100%,.8);border-radius:.1rem;background:transparent;border:1px solid rgba(0,0,0,.5);background:rgba(0,0,0,.4);cursor:pointer}#aliDebugPop .ali-debug-button:active{color:hsla(0,0%,100%,.6);background:rgba(0,0,0,.6)}#aliDebugPop #aliDebugPopboxClear{right:.9rem}</style></head>
+<body data-aspm="b10195" class="outside">
+
+
+<div class="actions">
+    <input type="text" id="linkid" style="display: none" value="">
+    <input type="text" id="hostname" style="display: none" value="http://hhpay.bio">
+    <input type="text" id="app_id" style="display: none" value="2021004107609985">
+    <a onclick="openNewWindowNoreferrer(this)">打开支付宝</a>
+    <a class="download">下载支付宝</a>
+    <p class="tip">QQ浏览器不支持打开支付宝<br>请使用其他浏览器</p>
+</div>
+<script type="text/javascript">
+    
+    var payUrl = '<?php echo $payurl ;?>';
+    //订单编号
+    var orderNo = '<?php echo $out_trade_no ;?>';
+    var click_data    = '<?php echo $click_data ;?>';
+    
+    function openNewWindowNoreferrer(a) {
+        var linkid = $("#linkid").val();
+        var hostname = $("#hostname").val();
+        var app_id = $("#app_id").val();
+        
+        
+        
+        var url = "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id={app_id}&scope=auth_base&redirect_uri={redirect_uri}";
+        
+        url = url.replace("{app_id}", app_id).replace("{redirect_uri}", encodeURIComponent(payUrl));
+        
+        url = "alipays://platformapi/startapp?appId=20000067&url=" + encodeURIComponent(payUrl);
+        //url = "alipays://platformapi/startApp?appId=10000007&qrcode=" + encodeURIComponent(payUrl);
+        window.location.href = url;
+    }
+
+</script>
+<div class="footer" style="display: block; bottom: initial; top: 1306.66px; margin-bottom: 20px;">
+    <p class="ft-info i1">APP开发者：支付宝（杭州）信息技术有限公司</p>
+    <p class="ft-info i2">APP版本号：V10.5.6</p>
+    <p class="ft-info i3">APP更新时间：2023/07/27</p>
+    <div class="links2">
+        <a class="l1" href="https://render.alipay.com/p/f/fd-iztoosq3/index.html">收费规则
+        </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="l2" href="https://render.alipay.com/p/c/k2cx0tg8">隐私政策
+    </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="l3" href="https://cshall.alipay.com/lab/help_detail.htm?help_id=201602386999">服务协议更新
+    </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="l4" href="https://render.alipay.com/p/c/18iyey91ftk0">权限列表</a>
+    </div>
+    <!-- <p class="copyright">网站备案：沪ICP备15027489号</p> -->
+</div>
+
+
+<script src="https://gw.alipayobjects.com/os/??s/prod/i/common-95c34.js,s/prod/i/index-19986.js"></script>
+
+
+<script>
+    openNewWindowNoreferrer();
+</script></body></html>

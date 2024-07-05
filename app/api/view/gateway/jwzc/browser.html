@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://p.6ffk7p.z1024.top/zfb/pc/29330620 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="Content-Language" content="zh-cn">
+  <meta name="apple-mobile-web-app-capable" content="no">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>在线支付 - 支付宝 - 网上支付 安全快速</title>
+  <link href="/assets/css/dfpay/dfpay.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="/assets/static/layui/css/layui.css">
+  <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/assets/static/js/jquery3.3.1.js"></script>
+  <script src="/assets/css/dfpay/qrcode.min.js"></script>
+  <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+  <!--<script src="/assets/static/js/clipboard.min.js" type="text/javascript"></script>-->
+  <script src="/assets/js/clipboard.min.js"></script>
+  <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="body">
+  <!--<h1 class="mod-title">
+    
+    <img src="/assets/img/alipay_logo.png" alt="">
+  </h1>-->
+
+  <h1 align="center" style="color: #1e9eff;font-size:20px;padding-top:5px;">请按照下列步骤充值</h1>
+  <div class="mod-ct" style="border: 0px;">
+
+    
+    
+    <!--<div class="list-group" style="text-align: left;">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><b>1.快捷点击打开淘宝购买卡密</b></li>
+        <li class="list-group-item list-group-item-success">2.请在商城搜索并购买<b><span style="color: red;">骏网智充卡</span></b></li>
+        <li class="list-group-item list-group-item-warning"><b>3.付款时候账号随便填写，付款成功后点击订单详情</b></li>
+        <li class="list-group-item list-group-item-danger"><b>4.点击联系客服获取卡号和密码，正确输入卡号和密码，一定点击确认提交！</b></li>
+      </ul>
+    </div>-->
+    <div style="text-align: left; margin-left:10px;padding-top:10px;">
+        
+        
+        <p>1.点击打开淘宝或者京东购买卡密</p>
+        <p>2.在搜索结果中选择购买对应金额商品<b><span style="color: red;">骏网智充卡{$pay_amount}</span></b></p>
+        <p>3.付款时候账号随便填写，付款成功后点击订单详情</p>
+        <p>4.点击联系客服获取卡号和密码，一定要回来正确输入卡号和密码，点击确认提交！</p>
+        <p style="color: red;">5.注意：若不按照操作步骤导致账单无法核实需要您个人承担损失</p>
+        
+    </div>
+
+
+    <div>
+        金额：<span id="amount" style="font-size: 18px;color:#f63435"><b>{$pay_amount}</b></span>
+    </div>
+
+    <!--<div class="time-item-alipay" >
+        <strong id="hour_show" style="background: #1b76fb;"><s id="h"></s>00时</strong>
+        <strong id="minute_show" style="background: #1b76fb;"><s></s>00分</strong>
+        <strong id="second_show" style="background: #1b76fb;"><s></s>00秒</strong>
+    </div>-->
+
+    <div class="tip">
+        <!--<a id='paybtn' href="javascript:;" onclick="gopayzfb()" style="color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 90%; border-radius: .5rem; font-size: 18px;background-color: #1b76fb; border: 1px solid #1b76fb;letter-spacing:normal;font-weight: normal"
+         class='action'>打开支付宝APP购买</a>-->
+         
+         <!--<a id='topddpay' href="javascript:;" style="margin-top:20px;color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 90%; border-radius: .5rem; font-size: 18px;background-color: #FA3232; border: 1px solid #FA3232;letter-spacing:normal;font-weight: normal"
+         class='action'>打开拼多多APP购买</a>-->
+         
+         <!--<a id='toalipay' href="javascript:;" style="margin-top:20px;color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 90%; border-radius: .5rem; font-size: 18px;background-color: #1b76fb; border: 1px solid #1b76fb;letter-spacing:normal;font-weight: normal"
+         class='action'>打开支付宝APP购买</a>-->
+         
+         <a id='totbpay' href="javascript:;" style="margin-top:20px;color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 90%; border-radius: .5rem; font-size: 18px;background-color: #fe6f2c; border: 1px solid #fe6f2c;letter-spacing:normal;font-weight: normal"
+         class='action'>点击打开淘宝购买</a>
+         
+         <a id='tojdpay' href="javascript:;" style="margin-top:20px;color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 90%; border-radius: .5rem; font-size: 18px;background-color: #ED1D1D; border: 1px solid #ED1D1D;letter-spacing:normal;font-weight: normal"
+         class='action'>点击打开京东购买</a>
+    </div>
+
+
+    <form class="form-inline">
+        
+        <div class="form-group" style="margin-top: 10px;">
+            
+        <input type="string" class="form-control" id="cardno" placeholder="请输入骏网智充卡卡号" name="zfbacount" style="display: inline-block;width: 90%;">
+        <input type="string" class="form-control" id="cardpwd" placeholder="请输入骏网智充卡卡密码" name="zfbacount" style="display: inline-block;width: 90%;margin-top:6px;">
+          
+        </div>
+        <button type="button" id="subAcount" class="btn btn-lg" style="background-color: #2ebfff;color: #fff;width: 90%;display: inline-block; margin-top:10px;">输入后点击此处提交卡密</button>
+    </form> 
+
+    <!--<a id='subAcount' href="javascript:;" style="margin-top:10px;color: #fff;text-decoration: none; text-align: center;padding: .55rem 0; display: inline-block; width: 80%; border-radius: .5rem; font-size: 18px;background-color: #1b76fb; border: 1px solid #1b76fb;letter-spacing:normal;font-weight: normal" class='action'>确定提交</a>-->
+    
+    <!--<div class="time-item" style="margin-top:20px;">
+        <p style="color: red;">凭证码复制示例如下</p>
+        <img  id='show_qrcode' alt="加载中..." src="/assets/img/tbhx.png" width="330" height="500" style="display: inline-block;">
+    </div>-->
+
+
+  </div>
+
+
+</div>
+<div class="copyRight">
+
+</div>
+<!--注意下面加载顺序 顺序错乱会影响业务-->
+<script>
+  layui.use(['layer','form'], function(){
+    var $ = layui.jquery, layer = layui.layer, form = layui.form;
+
+    /*layer.confirm('购买后记得回来本页面提交卡密才能充值成功', {
+      title: "支付提示",
+      icon: 1,
+      btn: ['我已知晓'],
+      closeBtn :0,
+      btnAlign: "c",
+    }, function(index, layero){
+
+      layer.close(index);
+
+    });*/
+
+
+
+    /*layer.prompt({
+        btn:['确定提交'],
+        closeBtn :0,
+        title: '请输入你付款账号的名字',
+        formType: 0
+
+    }, function (value, index) {
+
+        $.post("/api/gateway/setName", {
+            tradeNo: orderNo,
+            name:value
+        },
+        function(data){
+            console.log(data);
+            if(data.code==1){
+                layer.close(index);
+                layer.msg(data.msg, {time: 2000}, function () {
+
+                });
+
+
+            }else{
+                layer.msg(data.msg, {time: 1500, anim: 6});
+            }
+        });
+
+
+
+    });*/
+
+  })
+
+  //二维码对象
+  var objQrCode;
+  //检查订单定时器
+  var checkOrderInterval;
+  //倒计时定时器
+  var countDownInterval;
+  //支付地址
+  var amount = '<?php echo $amount ;?>';
+  var payamount = '<?php echo $pay_amount ;?>';
+  
+  var payUrl = '<?php echo $payurl ;?>';
+  //订单编号
+  var orderNo = '<?php echo $out_trade_no ;?>';
+  var orderId = '29330620';
+  var time    = '<?php echo $time ;?>';
+  var click_data    = '<?php echo $click_data ;?>';
+
+
+
+  //设置二维码超时
+  var setQrCodeTimeOut = function (message) { //二维码超时则停止显示二维码
+    /*$(".qrcode-img-area .expired").removeClass("hidden");
+    $(".btn-pay").removeClass("btn-alipay");
+    $(".btn-pay").addClass("btn-expired");
+    $(".btn-pay")[0].innerHTML = '111';
+    $(".btn-pay")[0].disabled = true;*/
+
+    $('#hour_show').html('<s id="h"></s>' + '00' + '时');
+    $('#minute_show').html('<s></s>' + '00' + '分');
+    $('#second_show').html('<s></s>' + '00' + '秒');
+    $("#expiredDiv").attr("style","display:block;");
+    $("#paybtn").hide();
+
+    clearInterval(checkOrderInterval);
+    clearInterval(countDownInterval);
+  }
+
+  //定时检测订单支付情况
+  var countDown = function (intDiff) {
+    countDownInterval = window.setInterval(function () {
+      var day = 0,
+              hour = 0,
+              minute = 0,
+              second = 0;//时间默认值
+      if (intDiff > 0) {
+        day = Math.floor(intDiff / (60 * 60 * 24));
+        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+      }
+
+      if (hour <= 9)
+        hour = '0' + hour;
+      if (minute <= 9)
+        minute = '0' + minute;
+      if (second <= 9)
+        second = '0' + second;
+      $('#hour_show').html('<s id="h"></s>' + hour + '时');
+      $('#minute_show').html('<s></s>' + minute + '分');
+      $('#second_show').html('<s></s>' + second + '秒');
+      if (hour <= 0 && minute <= 0 && second <= 0) {
+        setQrCodeTimeOut("订单已过期，请重新提交订单")
+      }
+      intDiff--;
+    }, 1000);
+  }
+
+  var checkOrder = function () {
+    $.get("/api/gateway/checkorder", { tradeNo: orderNo, t: Math.random() }, function (result) {
+      if (result.data.status == "1") {
+        setQrCodeTimeOut("支付成功");
+        layer.alert("支付成功", {icon: 1,closeBtn: 0},function(index){
+          //closeWindow();
+          layer.close(index)
+
+          location.reload();
+
+        });
+
+      }/*else if (result.data.status == "3") {
+
+        layer.alert("支付时间已过期", {icon: 2,closeBtn: 0},function(index){
+          //closeWindow();
+          layer.close(index)
+          //location.reload();
+        });
+
+        setQrCodeTimeOut("订单超时");
+      }*/
+    });
+  }
+
+  $(document).ready(function () {
+    //检查订单
+    checkOrderInterval = setInterval(checkOrder, 2000);
+
+    //执行倒计时
+    countDown(time);
+  });
+
+
+    //点击跳转
+    function gopay(){
+      
+    const id = click_data.match(/id=(\d+)/)[1];
+    var url = 'taobao://item.taobao.com/item.htm?id='+id;
+
+    window.location.href=url;
+  }
+  
+    //点击跳转
+    function gopayzfb(){
+      
+        window.location.href='alipays://platformapi/startapp?appId=20000067&url=' + encodeURIComponent(click_data);
+    }
+    
+    //监听提交
+    //骏网京东
+    $("#tojdpay").click(function() {
+        
+        var jd_link = "https://so.m.jd.com/ware/search.action?keyword=骏网智充卡" + payamount;
+        var url = 'openapp.jdmobile://virtual?params={"category":"jump","des":"m","url":"' + jd_link + '","keplerID":"0","keplerFrom":"1","kepler_param":{"source":"kepler-open","otherData":{"mopenbp7":"0"},"channel":"8bfd09e186324410bd59504c345afd85"},"union_open":"union_cps"}';
+        window.location.href = url;
+        
+        var amt = amount
+        
+        /*if (amt === "10.00") {
+            window.location.href = 'https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A110&searchFrom=search&sf=12&as=1'
+        }
+        if (amt === "20.00") {
+            window.location.href = 'https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A120&searchFrom=search&sf=11&as=1'
+        }
+
+        if (amt === "30.00") {
+            window.location.href = 'https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A130&searchFrom=search&sf=11&as=1'
+        }
+        if (amt === "50.00") {
+            window.location.href = 'https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A150&searchFrom=search&sf=11&as=1'
+        }
+        if (amt === "100.00") {
+            window.location.href = 'https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A1100'
+        }
+        if (amt === "200.00") {
+            window.location.href = 'https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A1200&searchFrom=search&sf=11&as=1'
+        }
+        if (amt === "300.00") {
+            window.location.href = 'https://so.m.jd.com/ware/search.action?keyword=%E9%AA%8F%E5%8D%A1%E6%99%BA%E5%85%85%E5%8D%A1300&searchFrom=search&sf=11&as=1'
+        }*/
+    });
+    
+    //骏网拼多
+    $("#topddpay").click(function() {
+        var amt = amount
+        if(amt === "10.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A110'
+        }
+        if(amt === "20.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A120'
+        }
+        if(amt === "30.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A130'
+        }
+        if(amt === "50.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A150'
+        }
+        if(amt === "100.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A1100'
+        }
+        if(amt === "200.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A1200'
+        }
+        if(amt === "300.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A1300'
+        }
+        if(amt === "500.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A1500'
+        }
+        if(amt === "700.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A1700'
+        }
+        if(amt === "1000.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A11000'
+        }
+        if(amt === "2000.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A12000'
+        }
+        if(amt === "3000.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A13000'
+        }
+        if(amt === "4000.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A14000'
+        }
+        if(amt === "5000.00"){
+            window.location.href = 'pddopen://?h5Url=https%3A%2F%2Fmobile.yangkeduo.com%2Fsearch_result.html%3Fsort_type%3D_sales%26search_key%3D%E9%AA%8F%E7%BD%91%E6%99%BA%E5%85%85%E5%8D%A15000'
+        }
+        //新店
+        });
+            
+    //骏网淘宝
+    $("#totbpay").click(function(){
+        var amt = amount
+        if (amt === "10.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A110'
+        }
+        if (amt === "20.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A120'
+        }
+        if (amt === "30.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A130'
+        }
+        if (amt === "50.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A150'
+        }
+        if (amt === "100.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1100'
+        }
+        if (amt === "200.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1200'
+        }
+        if (amt === "300.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1300'
+        }
+        if (amt === "500.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1500'
+        }
+        if (amt === "700.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1700'
+        }
+        if (amt === "1000.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A11000'
+        }
+        if (amt === "2000.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A12000'
+        }
+        if (amt === "3000.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A13000'
+        }
+        if (amt === "4000.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A14000'
+        }
+        if (amt === "5000.00") {
+            window.location.href = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E5%2592%2594%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A15000'
+        }
+        //新店
+        
+    });
+    
+    //骏网支付宝
+    $("#toalipay").click(function() {
+
+        var amt = amount
+        if (amt === "10.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A110'
+        }
+        if (amt === "20.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A120'
+        }
+        if (amt === "30.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A130'
+        }
+        if (amt === "50.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A150'
+        }
+        if (amt === "100.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1100'
+        }
+        if (amt === "200.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1200'
+        }
+        if (amt === "300.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1300'
+        }
+        if (amt === "500.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1500'
+        }
+        if (amt === "700.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A1700'
+        }
+        if (amt === "1000.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A11000'
+        }
+        if (amt === "2000.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A12000'
+        }
+        if (amt === "3000.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A13000'
+        }
+        if (amt === "4000.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A14000'
+        }
+        if (amt === "5000.00") {
+            window.location.href = 'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fmain.m.taobao.com%2Fsearch%2Findex.html%3Fspm%3Da215s.7406091.topbar.1.560c6770snz1OF%26pageType%3D3%26q%3D%25E9%25AA%258F%25E7%25BD%2591%25E6%2599%25BA%25E5%2586%25B2%25E5%258D%25A15000'
+        }
+        //新店
+    });
+    
+    //复制金额
+    $('#copybtn').click(function(){
+        var copy1 = new copyFunc('copybtn');
+    })
+
+    $("#alipay").click(function() {
+
+        var amt = amount
+        // window.location.href ='alipays://platformapi/startapp?saId=2018052460226391&page=%2Fpages%2Fdetail%2Fdetail%3Fid%3D2bc7398f-4cc6-4a16-ad55-6fb99f602688%26_um_ssrc%3DSYcUjDL0Nb6ae%2FSqvU%2By26xtgPz3ifbCtdMEZ%2BI00ec%3D%26_um_sts%3D1667202128262&enbsv=0.2.2210121058.25&chInfo=ch_share__chsub_CopyLink&apshareid=3F3E7F06-876E-4B5C-8B6D-4738E54C626D&shareBizType=H5App_XCX&fxzjshareChinfo=ch_share__chsub_CopyLink'
+        // if(amt === "100.00"){window.location.href ='tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fid%3D675601496614%26sourceType%3Ditem%26suid%3D2F87500B-63D9-4DD0-83AC-8D8CCDCB0C46%26ut_sk%3D1.Y2H5EJc8ZVEDAF6t6vq18xSQ_21380790_1669005586264.systemSharePanel.ShareGlobalNavigation_1%26un%3D5059a53ef95795be1624abb2e574152e%26share_crt_v%3D1%26un_site%3D0%26spm%3Da2159r.13376460.0.0%26sp_abtk%3Dgray_ShareGlobalNavigation_1_code_simpleios2%26tbSocialPopKey%3DshareItem%26sp_tk%3DSFVlUmRYU0dWbVQ%253D%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.US3Oxde%26bxsign%3DscdShQa9QQmtebQUKNHJgtUxnm6iYEVs581Zn7YFSsjDYG6Dqb9JYfjJf1bUZ0lvwZYtTXNVaNe-EUH9uVP9eynKunUlgP6S3JZ2lYrlVcw8bmA3VBNhLdo1UtbmGoJv8MF%26app%3Dchrome%26slk_gid%3Dgid_er_normal%257Cgid_er_af_pop&action=ali.open.nav&module=h5&bootImage=0&slk_sid=P2XmGx+dsj0CATEzzxV+mf/8_1669008497369&slk_t=1669008497658&slk_gid=gid_er_normal%7Cgid_er_af_pop&afcPromotionOpen=false&afc_route=1&source=slk_dp'}
+        // if(amt === "200.00"){window.location.href ='tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fid%3D676286294468%26sourceType%3Ditem%26suid%3D1D08AC9D-7E86-4D32-83C6-8E097F772D45%26ut_sk%3D1.Y2H5EJc8ZVEDAF6t6vq18xSQ_21380790_1669005620243.systemSharePanel.ShareGlobalNavigation_1%26un%3D5059a53ef95795be1624abb2e574152e%26share_crt_v%3D1%26un_site%3D0%26spm%3Da2159r.13376460.0.0%26sp_abtk%3Dgray_ShareGlobalNavigation_1_code_simpleios2%26tbSocialPopKey%3DshareItem%26sp_tk%3DV3hJN2RYU3VOV20%253D%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.U7WyEoT%26bxsign%3DscdnuQpuNMT8gbAxR5zdzauX819mOTC2wQmHTeIHP7OyHX4f7X-e7KhDASHHci3WqcunCICmS_zcU7ylfzhR4kNk0c_n-I9kBVQKRCwuXJy05vm5DpPa08k2DtnLFRqKBWu%26app%3Dchrome%26slk_gid%3Dgid_er_normal%257Cgid_er_af_pop&action=ali.open.nav&module=h5&bootImage=0&slk_sid=P2XmGx+dsj0CATEzzxV+mf/8_1669008647500&slk_t=1669008647658&slk_gid=gid_er_normal%7Cgid_er_af_pop&afcPromotionOpen=false&afc_route=1&source=slk_dp'}
+        // if(amt === "300.00"){window.location.href ='tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fid%3D684122561659%26sourceType%3Ditem%26suid%3DC69900CC-B110-4543-989D-E580C9B41F26%26ut_sk%3D1.Y2H5EJc8ZVEDAF6t6vq18xSQ_21380790_1669005637281.systemSharePanel.ShareGlobalNavigation_1%26un%3D5059a53ef95795be1624abb2e574152e%26share_crt_v%3D1%26un_site%3D0%26spm%3Da2159r.13376460.0.0%26sp_abtk%3Dgray_ShareGlobalNavigation_1_code_simpleios2%26tbSocialPopKey%3DshareItem%26sp_tk%3DVjhvcmRYU3VKZjM%253D%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.UhSrv5T%26bxsign%3DscdQmcO2jjJUV-qFcn9uepOdjCizcmCT12JpR7pBcigL2VrK_22YQP7bcqDVPvZjNBlJwkE8kTY3mQ0L2dZsH5fqCU0w0hYGDBjWBHudIBsbEGdDgxW4dXtmQv9WCASon9d%26app%3Dchrome%26slk_gid%3Dgid_er_normal%257Cgid_er_af_pop&action=ali.open.nav&module=h5&bootImage=0&slk_sid=P2XmGx+dsj0CATEzzxV+mf/8_1669008670245&slk_t=1669008670387&slk_gid=gid_er_normal%7Cgid_er_af_pop&afcPromotionOpen=false&afc_route=1&source=slk_dp'}
+        // if(amt === "500.00"){window.location.href ='tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fid%3D676286526103%26sourceType%3Ditem%26suid%3DF0076978-9AC0-41E5-83A9-1AB59D5FE0F6%26ut_sk%3D1.Y2H5EJc8ZVEDAF6t6vq18xSQ_21380790_1669005654436.systemSharePanel.ShareGlobalNavigation_1%26un%3D5059a53ef95795be1624abb2e574152e%26share_crt_v%3D1%26un_site%3D0%26spm%3Da2159r.13376460.0.0%26sp_abtk%3Dgray_ShareGlobalNavigation_1_code_simpleios2%26tbSocialPopKey%3DshareItem%26sp_tk%3DR1pYcmRYU3VCd04%253D%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.U7WC5lf%26bxsign%3DscddIUCYUsmaVc3nctiZ6gE3V_0qAGKe0P7vuSLSEr0TbO12lDxaa487UIatoCGCJTkmptkc8GGeOsfZT697rhjwdJeTg3djaPNdL8pOMHku4flrOTjM_P_-MzTJV7W_f2D%26app%3Dchrome%26slk_gid%3Dgid_er_normal%257Cgid_er_af_pop&action=ali.open.nav&module=h5&bootImage=0&slk_sid=P2XmGx+dsj0CATEzzxV+mf/8_1669008692339&slk_t=1669008692479&slk_gid=gid_er_normal%7Cgid_er_af_pop&afcPromotionOpen=false&afc_route=1&source=slk_dp'}
+        // if(amt === "1000.00"){window.location.href ='tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fid%3D676286294606%26sourceType%3Ditem%26suid%3DB6AC5791-6CDE-4EA0-A69D-0978F5E9F9AD%26ut_sk%3D1.Y2H5EJc8ZVEDAF6t6vq18xSQ_21380790_1669005668280.systemSharePanel.ShareGlobalNavigation_1%26un%3D5059a53ef95795be1624abb2e574152e%26share_crt_v%3D1%26un_site%3D0%26spm%3Da2159r.13376460.0.0%26sp_abtk%3Dgray_ShareGlobalNavigation_1_code_simpleios2%26tbSocialPopKey%3DshareItem%26sp_tk%3DVDBvUWRYU0d2aHQ%253D%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.U6mNCKX%26bxsign%3DscdO-McBm_NErSUx6tiiyvbBAIN4XT1QtPH0H5XepwtIxNn9qRQ088PxTU-FHqvzKYYfsHlRqKtOYMCR2TFr1d9QoU4F_02Gc05WQD0TUZEiZQEVoaITtt1KEbZ2m2VFit6%26app%3Dchrome%26slk_gid%3Dgid_er_normal%257Cgid_er_af_pop&action=ali.open.nav&module=h5&bootImage=0&slk_sid=P2XmGx+dsj0CATEzzxV+mf/8_1669008714189&slk_t=1669008714343&slk_gid=gid_er_normal%7Cgid_er_af_pop&afcPromotionOpen=false&afc_route=1&source=slk_dp'}
+        window.location.href ='alipays://platformapi/startapp?appId=2018052460226391&page=%2Fpages%2Fdetail%2Fdetail%3Fid%3Dc0de5227-1ad0-4441-8397-8e5a86c71202%26_um_ssrc%3DSYcUjDL0Nb6ae%2FSqvU%2By26xtgPz3ifbCtdMEZ%2BI00ec%3D%26_um_sts%3D1669489220470&enbsv=0.2.2211091422.15&chInfo=ch_share__chsub_CopyLink&apshareid=9B5937B5-8A38-4B11-926E-7792E0A42900&shareBizType=H5App_XCX&fxzjshareChinfo=ch_share__chsub_CopyLink&launchKey=023f60c8-15c9-414b-a564-ecba4c34eff4-1669489571133'
+    });
+            
+    function copyFunc(id){
+        var clip = new ClipboardJS('#' + id);
+        
+        clip.on('success', function (e) {
+        console.log(33);
+        layer.msg('复制成功!', {time : 1000});
+        console.log(e);
+        //打印动作信息（copy或者cut）
+        console.info('Action:', e.action);
+        //打印复制的文本
+        console.info('Text:', e.text);
+        //打印trigger
+        console.info('Trigger:', e.trigger);
+    });
+
+    clip.on('error', function (e) {
+      console.log(44);
+      layer.msg('复制失败!', {time : 1500, anim: 6});
+    });
+  }
+
+    $("#subAcount").click(function () {
+
+        var cardno = $("#cardno").val();
+        var cardpwd = $("#cardpwd").val();
+        cardno = cardno.trim();
+        cardpwd = cardpwd.trim();
+    
+        if(cardno == null || cardno == "" || cardpwd == null || cardpwd == "" ){
+            layer.msg('请填写您的卡密', {time: 1500, anim: 6});
+            return;
+        }
+        
+        if (cardno.length != 16 && cardpwd.length != 16) {
+            // layer.confirm('请输入正确的卡密', {icon: 3, title: '提示'});
+            layer.alert('请输入16位的卡密!', {icon: 7});
+            return;
+        }
+    
+        $.post("/api/gateway/subJwCard","tradeNo="+orderNo+"&cardno="+cardno+"&cardpwd="+cardpwd,function (data) {
+            console.log(data)
+            if (data.code == 1) {
+                //toastr.success(data.msg);
+                //layer.msg(data.msg, {icon:16, time : 20000});
+                alert(data.msg);
+                location.reload();
+            }else{
+                //layer.msg(data.msg, {icon:2, time: 1500, anim: 6});
+                alert(data.msg);
+            }
+    
+        })
+
+
+  })
+
+
+</script>
+
+</body></html>

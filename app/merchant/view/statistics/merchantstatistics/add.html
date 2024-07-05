@@ -1,0 +1,258 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Group_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-group_id" data-rule="required" data-source="group/index" class="form-control selectpage" name="row[group_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agent_id" data-rule="required" data-source="agent/index" class="form-control selectpage" name="row[agent_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-number" data-rule="required" class="form-control" name="row[number]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-username" data-rule="required" class="form-control" name="row[username]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Nickname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-nickname" data-rule="required" class="form-control" name="row[nickname]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rate" data-rule="required" class="form-control" name="row[rate]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Add_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-add_money" class="form-control" step="0.01" name="row[add_money]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Password')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-password" data-rule="required" class="form-control" name="row[password]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Salt')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-salt" data-rule="required" class="form-control" name="row[salt]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_password')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_password" data-rule="required" class="form-control" name="row[pay_password]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mobile')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-mobile" data-rule="required" class="form-control" name="row[mobile]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Email')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-email" class="form-control" name="row[email]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Avatar')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" data-rule="required" class="form-control" size="50" name="row[avatar]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-avatar"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level" data-rule="required" class="form-control" name="row[level]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gender')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-gender" data-rule="required" class="form-control" name="row[gender]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-money" data-rule="required" class="form-control" step="0.01" name="row[money]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Successions')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-successions" data-rule="required" class="form-control" name="row[successions]" type="number" value="1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Maxsuccessions')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-maxsuccessions" data-rule="required" class="form-control" name="row[maxsuccessions]" type="number" value="1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Prevtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-prevtime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[prevtime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Logintime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-logintime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[logintime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Loginip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-loginip" data-rule="required" class="form-control" name="row[loginip]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Loginfailure')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-loginfailure" data-rule="required" class="form-control" name="row[loginfailure]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Joinip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-joinip" data-rule="required" class="form-control" name="row[joinip]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Jointime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-jointime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[jointime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Token')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-token" data-rule="required" class="form-control" name="row[token]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" data-rule="required" class="form-control" name="row[status]" type="text" value="nomal">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Verification')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-verification" data-rule="required" class="form-control" name="row[verification]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Google_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-google_code" class="form-control" name="row[google_code]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Block_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-block_money" class="form-control" step="0.01" name="row[block_money]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rate_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rate_money" class="form-control" step="0.01" name="row[rate_money]" type="number" value="0.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Secret_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-secret_key" class="form-control" name="row[secret_key]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Last_money_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-last_money_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[last_money_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Login_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-login_ip" class="form-control" name="row[login_ip]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Api_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-api_ip" class="form-control" name="row[api_ip]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Userids')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-userids" class="form-control" name="row[userids]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_fc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_fc" data-rule="required" class="form-control selectpicker" name="row[is_fc]">
+                {foreach name="isFcList" item="vo"}
+                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fc_address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fc_address" class="form-control" name="row[fc_address]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Min_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-min_money" data-rule="required" class="form-control" step="0.01" name="row[min_money]" type="number" value="10.00">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Max_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-max_money" data-rule="required" class="form-control" step="0.01" name="row[max_money]" type="number" value="10000.00">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

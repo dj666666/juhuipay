@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://ys8112.com/?c=Pay&a=info&osn=MS2023051016355135699 -->
+<html style="font-size: 100px; width: 750px; margin: 0px auto;">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width,height=device-height, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0,shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+    <!--<script type="text/javascript" src="/public/static/jquery.qrcode.min.js"></script>-->
+    <script type="text/javascript" src="/assets/static/szqb/swiper-4.2.0.min.js"></script>
+    <script type="text/javascript" src="/assets/static/szqb/rem.js"></script>
+    <script type="text/javascript" src="/assets/static/szqb/layer.js"></script>
+    <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="/assets/static/szqb/swiper-4.2.0.min.css">
+    <link type="text/css" rel="stylesheet" href="/assets/static/szqb/css.css">
+    <link rel="stylesheet" href="/assets/static/szqb/weui.css">
+    <link rel="stylesheet" href="/assets/static/layui/css/layui.css">
+
+    <style>
+        .main .head {
+        	background: url(/public/alipay_new/dcephead.png) no-repeat left center;
+        	background-size: contain;
+        }
+        .weui-loadmore {
+            width: 86%;
+            font-size: 12px;
+        }
+        .f-blue {
+        color: #10aeff !important;
+    }
+
+</style>
+</head>
+<body style="min-height: 667px;">
+	<div class="pd25">
+		
+		<div class="main">
+			
+			<dl class="head">
+				<dt>RMB数字钱包支付</dt>
+				<dd>订单号：{$out_trade_no}</dd>
+			</dl>
+
+			<div class="je">
+				付款金额：<span class="all" id="money">{$pay_amount}</span><span class="copy_btn1">复制</span>
+			</div>
+			
+
+			
+
+            <div class="weui-loadmore" id="loading" data-loading="1" style="display: none;">
+                <i class="weui-loading"></i>
+                <span class="weui-loadmore__tips f-blue">正在获取支付信息，请耐心等待，30秒未获得支付信息，可能是因为高峰期有相同的付款金额占领通道，请尝试重新填写不同的金额支付！尽量不用整数充值！</span>
+            </div>
+			<!--div class="t2">步骤：跳转到钱包APP点转钱根据提示完成付款</div-->
+		
+            <div class="wait" style="color: red; opacity: 1;" id="countdown">请在<span style="">03:07</span>分钟内,按照以下钱包编号,完成转账</div>
+			<div class="code_out" style="display: none;" id="qrcode_wrap">
+				<div class="s1">请勿重复支付和修改金额</div>
+				<div class="code" id="image"></div>
+				<div class="s2">否则有可能无法立即到账</div>
+			</div>
+
+			<div class="title">100%秒到账:请按以下金额转账,切勿修改金额支付</div>
+
+			<ul class="copy _z_js_wrap_bank_info" style="">
+				<li>
+					<span>收款户名：<em id="copy2"><u style="text-decoration: none;"><font color="blue" id="bc_user_text2">{$payurl}</font></u></em></span>
+					<span class="copy_btn copy_btn2">复制</span>
+				</li>
+				<li>
+					<span>钱包编号：<em id="copy3"><u style="text-decoration: none;"><font color="blue" id="bc_num_text2">{$click_data}</font></u></em></span>
+					<span class="copy_btn copy_btn3">复制</span>
+				</li>
+				<li>
+					<span>转帐金额：<em id="copy4"><u style="text-decoration: none;"><font color="red" id="bc_money_text2">{$pay_amount}</font></u></em></span>
+					<span class="copy_btn copy_btn4">复制</span>
+				</li>
+			</ul>
+
+            <dl class="copy_tip _z_js_wrap_bank_info" style="">
+				<dt>
+					<a class="z_jump_down" href="javascript:;">未安装数字人民币APP点此下载<i></i></a>
+				</dt>
+			</dl>
+			
+			<dl class="copy_tip _z_js_wrap_bank_info" style="">
+				<dt>
+					<a class="z_jump" href="javascript:;">已安装APP点此拉起转账<i></i></a>
+				</dt>
+				<dd>*如遇无法自动输入钱包编号请返回该页手动复制</dd>
+			</dl>
+			
+			
+
+			<div class="title2 _z_js_wrap_bank_info" style="">转帐教程</div>
+
+			<div class="swiper-container banner _z_js_wrap_bank_info swiper-container-horizontal swiper-container-ios" style="">
+				<div class="swiper-wrapper" style="transform: translate3d(-2100px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="width: 700px;">
+						<img src="/assets/static/szqb/b6.png" alt="">
+					</div>
+					<div class="swiper-slide" data-swiper-slide-index="0" style="width: 700px;">
+						<img src="/assets/static/szqb/b1.png" alt="">
+					</div>
+					<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 700px;">
+						<img src="/assets/static/szqb/b2.png" alt="">
+					</div>
+					<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 700px;">
+						<img src="/assets/static/szqb/b3.png" alt="">
+					</div>
+					<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" style="width: 700px;">
+						<img src="/assets/static/szqb/b4.png" alt="">
+					</div>
+					<div class="swiper-slide" data-swiper-slide-index="4" style="width: 700px;">
+						<img src="/assets/static/szqb/b5.png" alt="">
+					</div>
+					<div class="swiper-slide" data-swiper-slide-index="5" style="width: 700px;">
+						<img src="/assets/static/szqb/b6.png" alt="">
+					</div>
+				<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 700px;">
+						<img src="/assets/static/szqb/b1.png" alt="">
+					</div></div>
+				<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="display: none;"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span></div>
+				<div class="cbtn my-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+				<div class="cbtn my-next" tabindex="0" role="button" aria-label="Next slide"></div>
+			<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+			<div class="clear"></div>
+
+		</div>
+
+		<!--div class="end">如付款5分钟内未到账，请联系平台客服处理！</div-->
+		
+	</div>
+
+	<div id="tan">
+		<div id="tan_success" class="type"> <img src="/assets/static/szqb/type1.png" alt="" class="ico">
+			<div class="s1">支付成功</div>
+			<div class="s2">如5分钟内未到帐请联系客服</div>
+		</div>
+
+
+		<div class="type" id="tan_fail">
+			<img src="/assets/static/szqb/type2.png" alt="" class="ico">
+			<div class="s1">支付失败</div>
+			<div class="s2">请重新申请订单，勿重复支付</div>
+		</div>
+
+
+		<div class="type" id="tan_cancel">
+			<img src="/assets/static/szqb/type3.png" alt="" class="ico">
+			<div class="s1">支付超时</div>
+			<div class="s2">请重新申请订单，勿重复支付</div>
+		</div>
+
+	</div>
+	
+
+
+<script>
+    window.isOrderPage=false;
+    window.nowOrderSn=null;
+    window.needSocket=true;
+    window.Databus={pauseSound:0,pauseMusic:0};
+
+    layui.use(['layer','form'], function(){
+        var $ = layui.jquery, layer = layui.layer, form = layui.form;
+        
+        
+        
+        /*layer.confirm('请复制金额粘贴到付款界面完成付款，严格按照提示金额付款，否则损失自行承担，切记切记！', {
+        title: "支付提示",
+        icon: 0,
+        btn: ['复制金额'],
+        closeBtn :0,
+        btnAlign: "c",
+        }, function(index, layero){
+        console.log(11);
+        //复制金额
+        var copy1 = new copyFunc('money');
+        
+        $('#copybtn').click();
+        layer.close(index);
+        
+        });*/
+        
+        
+        
+        /*layer.prompt({
+        btn:['确定提交'],
+        closeBtn :0,
+        title: '请输入你付款账号的名字',
+        formType: 0
+        
+        }, function (value, index) {
+        
+        $.post("/api/gateway/setName", {
+            tradeNo: orderNo,
+            name:value
+        },
+        function(data){
+            console.log(data);
+            if(data.code==1){
+                layer.close(index);
+                layer.msg(data.msg, {time: 2000}, function () {
+                    
+                });
+                
+                
+            }else{
+                layer.msg(data.msg, {time: 1500, anim: 6});
+            }
+        });
+        
+        
+        
+        });*/
+        
+    })
+        
+	var d_time= '<?php echo $time ;?>';
+	var timer=null;
+	if(d_time>0){
+		setTimer();
+	}else{
+		$('.time').html('订单已超时');
+	}
+	
+	function setTimer(){
+		if(timer){
+			clearInterval(timer);
+		}
+		var d_time_flag=secTrans(d_time);
+		$('#countdown').html('请在 <span style="">'+d_time_flag+'</span>分钟内,按照以下钱包编号,完成转账').css({opacity:1});
+		timer=setInterval(function(){
+			d_time--;
+			if(d_time<0){
+				location.reload();
+				clearInterval(timer);
+			}
+			var d_time_flag=secTrans(d_time);
+			$('#countdown').html('请在<span style="">'+d_time_flag+'</span>分钟内,按照以下钱包编号,完成转账').css({opacity:1});
+		},1000);
+	}
+
+	function secTrans(sec){
+		var d_min=Math.floor(sec/60);
+		var d_sec=sec%60;
+		if(d_min<0){
+			d_min=0;
+		}
+		if(d_min<10){
+			d_min='0'+d_min;
+		}
+		if(d_sec<0){
+			d_sec=0;
+		}
+		if(d_sec<10){
+			d_sec='0'+d_sec;
+		}
+		var d_time_flag=d_min+':'+d_sec;
+		return d_time_flag;
+	}
+
+
+
+	function showRemaining(distance) {
+		var timer = setInterval(function () {
+			distance--;
+			if (distance < 0) {
+				clearInterval(timer);
+
+				$('#countdown').text('订单过期！');
+				$('#tan').show();
+				$('#tan_cancel').show();
+				return;
+			}
+			var minute = Math.floor(distance / 60);
+			var second = Math.floor(distance) - (minute * 60);
+			if (minute < 10) minute = '0' + minute;
+			if (second < 10) second = '0' + second;
+			$('#countdown').text('请在' + minute + '分' + second + '秒内按照以下订单完成转账');
+		}, 1000)
+	}
+
+	var left_time = 474;
+ 
+				 
+                          // showRemaining(600);
+            
+
+
+	var timer    = setInterval("getOrder()", 3000);
+	var order_sn = '<?php echo $out_trade_no ;?>';
+	var ua       = navigator.userAgent.toLowerCase();
+	var updateQrImg = 0;
+	// if (window.webSoc === undefined) {
+	//     window.webSoc = new WebSocket("{}");
+	// }
+
+	// 打开Socket
+	// window.webSoc.onopen = function () {
+	//     window.webSoc.send('{"type":"order","order_sn":' + 62019 + '}');
+	//     setInterval(show, 50000);
+	// };
+
+	function show(){
+		window.webSoc.send('heart beat\n');
+	}
+
+	function getOrder()
+	{
+		$.ajax({
+			type: 'GET',
+			url: '/api/gateway/checkorder',
+			// data to be added to query string:
+			data: { tradeNo: order_sn },
+			// type of data we are expecting in return:
+			dataType: 'json',
+			timeout: 300,
+			success: function(data){ 
+				if (data.data.status == "1") {
+					
+					layer.alert("支付成功", {icon: 1,closeBtn: 0},function(index){
+                        //closeWindow();
+                        layer.close(index)
+                        
+                        closeWindow();
+                    });
+                    
+					/*if (data.data.pay_status == 9) {
+					    $('#tan').show();
+			         	$('#tan_success').show();
+			         	clearInterval(timer);
+					}
+					if (data.data.pay_status == 4) {
+				        $('#tan').show();
+				        $('#tan_fail').show(); 
+				        clearInterval(timer);
+					}
+					if (data.data.pay_status == 3) {
+				        $('#tan').show();
+				        $('#tan_cancel').show(); 
+				        clearInterval(timer);
+					}*/
+				} else if(data.data.status == "3"){
+					clearInterval(timer);
+					$('#image').hide();
+					$('#tan').show();
+					$('#tan_cancel').show();
+					
+					layer.alert("支付时间已过期", {icon: 2,closeBtn: 0},function(index){
+                        //closeWindow();
+                        layer.close(index)
+                        closeWindow();
+                    });
+                    
+				}
+			},
+			error: function(xhr, type){
+				console.log('error');
+			}
+		})
+	}
+</script>
+<script type="text/javascript">
+
+	var banner = new Swiper('.banner', {
+      pagination: {
+        el: '.banner .swiper-pagination',//分页选择器        
+        clickable : true,
+      },
+      slidesPerView: 1,
+      loop : true,
+      autoplay: {
+		    delay: 5000,//5秒切换一次
+		    disableOnInteraction : false,//用户操作后继续,true为停止
+	},
+	navigation: {prevEl: '.banner .my-prev',
+      nextEl: '.banner .my-next',
+	  },
+    });
+
+	function getQrcode(url, qrcode_with = 200, qrcode_height = 200) {
+		$("#image").qrcode({
+			render: "canvas",
+			width: 200,
+			height: 200,
+			text: decodeURIComponent(url)
+		});
+		$('#image').find('canvas').css({'width': '100%', 'height': 'auto'});
+	}
+
+	function copy(id,text){
+        const range = document.createRange();
+        range.selectNode(document.getElementById(id));
+
+        const selection = window.getSelection();
+        if(selection.rangeCount > 0) selection.removeAllRanges();
+        selection.addRange(range);
+		document.execCommand('copy');
+        if (text) {
+			alert(text);
+		}
+}  //id 是要复制的 元素id   text 是要显示的名字
+
+	$('#countdown').on('click',function(){
+		var obj=$(this);
+		var osn='MS2023051016355135699';
+		layer.open({
+			//title:'',
+			content:'如果您已支付请确定提交',
+			style:'width:62%',
+			btn:['确定','取消'],
+			yes:function(idx){
+				layer.close(idx);
+				ajax({
+					url:global.appurl+'c=Pay&a=infoAct',
+					data:{osn:osn},
+					success:function(json){
+						if(json.code!=1){
+							_alert(json.msg);
+							return;
+						}
+						_alert({
+							content:json.msg,
+							end:function(){
+								location.reload();
+							}
+						});
+					}
+				});
+			}
+		});
+	});
+
+	$('.copy_btn1').click(function () {  //点击位置的 class
+		copy('money','已复制好，请粘贴使用'); //拷贝文本的id 显示的文字
+	})
+	$('.copy_btn2').click(function () {  //点击位置的 class
+		copy('copy2','已复制好，请粘贴使用'); //拷贝文本的id 显示的文字
+	})
+	$('.copy_btn3').click(function () {  //点击位置的 class
+		copy('copy3','已复制好，请粘贴使用'); //拷贝文本的id 显示的文字
+	})
+	$('.copy_btn4').click(function () {  //点击位置的 class
+		copy('copy4','已复制好，请粘贴使用'); //拷贝文本的id 显示的文字
+	})
+	$('.z_jump').click(function () {
+		copy('copy3');
+		//location.href = 'alipays://platformapi/startapp?appId=20000067&url=alipayqr%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D20000116';
+		//location.href = 'alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.pbcdci.cn/00502000001000012495281985929';
+		//location.href = 'https://pilot.app.ecny.pbcdci.cn/download/index.html';
+		location.href = 'dcep://uniwallet/startApp/commonLink?uniwallet_biz=redPacket&uniwallet_version=1.0&uniwallet_pathType=PT01';
+	})
+	$('.z_jump_down').click(function () {
+		window.open("https://pilot.app.ecny.pbcdci.cn/download/index.html");
+	})
+</script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

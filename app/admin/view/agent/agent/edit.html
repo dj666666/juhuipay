@@ -1,0 +1,93 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Group_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-group_id" data-rule="required" data-source="group/index" class="form-control selectpage" name="row[group_id]" type="text" value="{$row.group_id|htmlentities}">
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-number" data-rule="required" class="form-control" readonly name="row[number]" type="text" value="{$row.number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-username" data-rule="required" class="form-control" readonly name="row[username]" type="text" value="{$row.username|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Nickname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-nickname" data-rule="required" class="form-control" name="row[nickname]" type="text" value="{$row.nickname|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Password')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-password" data-rule="" placeholder="不修改密码请留空" class="form-control" name="row[password]" type="text" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rate" data-rule="required" class="form-control" name="row[rate]" type="text" value="{$row.rate|htmlentities}">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Auto_refresh_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-auto_refresh_time" data-rule="required" class="form-control" name="row[auto_refresh_time]" type="text" value="{$row.auto_refresh_time|htmlentities}">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Login_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-login_ip" class="form-control" name="row[login_ip]" type="text" value="{$row.login_ip|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Loginfailure')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-loginfailure" data-rule="required" class="form-control" name="row[loginfailure]" type="number" value="{$row.loginfailure|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {foreach name="statusList" item="vo"}
+                <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Google_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-google_code" class="form-control" readonly name="row[google_code]" type="text" value="{$row.google_code|htmlentities}">
+        </div>
+    </div>
+   <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">谷歌二维码:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div id="googlediv"></div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

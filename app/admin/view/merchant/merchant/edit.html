@@ -1,0 +1,194 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Group_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-group_id" data-rule="required" data-source="group/index" class="form-control selectpage" name="row[group_id]" type="text" value="{$row.group_id|htmlentities}">
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agent_id" data-rule="required" data-source="agent.agent/index" data-field="username" class="form-control selectpage" name="row[agent_id]" type="text" value="{$row.agent_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-number" data-rule="required" class="form-control" readonly name="row[number]" type="text" value="{$row.number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-username" data-rule="required" class="form-control" readonly name="row[username]" type="text" value="{$row.username|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Nickname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-nickname" data-rule="required" class="form-control" name="row[nickname]" type="text" value="{$row.nickname|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rate" data-rule="required" class="form-control" name="row[rate]" type="text" value="{$row.rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Df_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-df_rate" data-rule="required" class="form-control" name="row[df_rate]" type="text" value="{$row.df_rate|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Add_Money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-add_money" data-rule="required" class="form-control" name="row[add_money]" type="text" value="{$row.add_money|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Password')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-password" data-rule="" class="form-control" placeholder="不修改密码请留空" name="row[password]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pay_password')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pay_password" data-rule="" class="form-control" placeholder="不修改支付密码请留空" name="row[pay_password]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Loginfailure')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-loginfailure" data-rule="required" class="form-control" name="row[loginfailure]" type="number" value="{$row.loginfailure|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Login_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-login_ip" class="form-control" name="row[login_ip]" type="text" value="{$row.login_ip|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Api_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-api_ip" class="form-control" name="row[api_ip]" type="text" value="{$row.api_ip|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Min_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-min_money" data-rule="required" class="form-control" name="row[min_money]" type="text" value="{$row.min_money|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Max_money')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-max_money" data-rule="required" class="form-control" name="row[max_money]" type="text" value="{$row.max_money|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_fc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {foreach name="isFcList" item="vo"}
+                <label for="row[is_fc]-{$key}"><input id="row[is_fc]-{$key}" name="row[is_fc]" type="radio" value="{$key}" {in name="key" value="$row.is_fc"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fc_address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fc_address" class="form-control" name="row[fc_address]" type="text" value="{$row.fc_address|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {foreach name="statusList" item="vo"}
+                <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="normal"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Userids')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-userids" data-multiple="true" data-source="user.user/index" data-field="username" class="form-control selectpage" name="row[userids]" type="text" value="{$row.userids|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Secret_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {foreach name="secretTypeList" item="vo"}
+                <label for="row[secret_type]-{$key}"><input id="row[secret_type]-{$key}" name="row[secret_type]" type="radio" value="{$key}" {in name="key" value="$row.secret_type"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Secret_key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-secret_key" class="form-control" readonly name="row[secret_key]" type="text" value="{$row.secret_key|htmlentities}">
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Google_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-google_code" class="form-control" readonly name="row[google_code]" type="text" value="{$row.google_code|htmlentities}">
+        </div>
+    </div>-->
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Google_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div id="googlediv"></div>
+        </div>
+    </div>-->
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_third_df')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {foreach name="isThirdDfList" item="vo"}
+                <label for="row[is_third_df]-{$key}"><input id="row[is_third_df]-{$key}" name="row[is_third_df]" type="radio" value="{$key}" {in name="key" value="$row.is_third_df"}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Df_acc_ids')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-df_acc_ids" data-multiple="true" data-source="daifu.dfacc/index" data-field="name" class="form-control selectpage" name="row[df_acc_ids]" type="text" value="{$row.df_acc_ids|htmlentities}">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">飞机群id:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tg_group_id" data-rule="required" class="form-control" name="row[tg_group_id]" type="text" value="{$row.tg_group_id|htmlentities}">
+        </div>
+    </div>
+    
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

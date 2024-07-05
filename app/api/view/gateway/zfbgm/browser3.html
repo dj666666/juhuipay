@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0065)http://pay.zea9c.cn/api/pay.htm?serialNumber=20220603163240357650 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>支付订单</title>
+
+
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
+
+
+    <link rel="stylesheet" type="text/css" href="/assets/static/css/zfddstyle.css" >
+    <link rel="stylesheet" type="text/css" href="/assets/static/css/layer.css">
+    
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+    <script src="/assets/static/js/layer.js"></script>
+    <script src="/assets/js/clipboard.min.js"></script>
+    <script src="/assets/css/dfpay/qrcode.min.js"></script>
+
+    
+
+</head>
+<body id="body">
+<!--头部  star-->
+<header style="color:#fff">
+   
+    <span>支付订单</span>
+    <a href="{$click_data}" style="display: block">
+        <div class="_right" style="color: #fff;">提交</div>
+    </a>
+    
+</header>
+<!--头部 end-->
+<!--内容 star-->
+<div class="contaniner fixed-cont">
+    
+
+    <div class="payTime">
+        <li><span></span></li>
+        <li><strong>¥{$pay_amount}</strong><span class="copy" style="margin-left: 5px;color: #ff0000" onclick="copyVal('{$pay_amount}')">复制</span></li>
+        <li>订单号 : {$out_trade_no}</li>
+    </div>
+    
+        <div class="pay_img" id="show_qrcode" style="width: 200px;height: 230px;margin: 0 auto;position: relative;">
+        </div>
+    
+
+    <!--支付 star-->
+    <div class="pay" style="height: 200px">
+
+        <div class="show">
+
+            <li><label><img src="/assets/img/zhifubao.png">H5快速支付(推荐)<input name="type" type="radio" value="" checked="" onchange="changeType(1)"><span></span></label> </li>
+                 
+            <li class="center">
+                请按照以上金额进行付款，否则无法到账
+
+            <h1 style="color: red;">跳不过去支付宝请截屏二维码扫一扫支付。</h1>
+            </li>
+
+            
+        </div>
+        
+    </div>
+    <!--支付 end-->
+
+
+</div>
+
+
+<div class="book-recovery-bot2" id="footer">
+    
+        <a href="{$click_data}" id="alipay" style="display: block" class="copy">
+            <div class="payBottom">
+                <li class="textfr">确认支付：</li>
+                <li class="textfl"><span>¥{$pay_amount}</span></li>
+            </div>
+        </a>
+
+         <!--<a href="alipays://platformapi/startapp?appId=09999988&amp;actionType=toAccount&amp;goBack=NO&amp;amount=29.99&amp;userId=2088712417537261&amp;memo=20220603163240357650" id="alipay2" style="display: none" class="copy">
+            <div class="payBottom">
+                <li class="textfr">确认支付：</li>
+                <li class="textfl"><span>¥{$amount}</span></li>
+            </div>
+         </a>-->
+
+        
+            
+                
+                
+            
+        
+
+</div>
+<!--内容 end-->
+
+<script type="text/javascript">
+
+    var orderNo = '<?php echo $out_trade_no ;?>';
+    var payUrl = '<?php echo $payurl ;?>';
+
+    var checkOrder = function () {
+            $.get("/api/gateway/checkorder", { tradeNo: orderNo, t: Math.random() }, function (result) {
+                if (result.data.status == "3") {
+                    location.reload();
+                }
+                
+                if (result.data.status == "1") {
+                    layer.confirm('支付成功！', {
+                        icon: 1,        //会出现正确的图片
+                        btn: ['好']     //按钮
+                    }, function(){
+                        location.reload();//点击“好”后进行跳转
+                    });
+
+                }
+                
+            });
+        }
+
+        $(document).ready(function () {
+            
+            //生成二维码
+            objQrCode = new QRCode('show_qrcode', {
+                render: "canvas",
+                text: payUrl,
+                width: 210,
+                height: 210,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.L
+            });
+          
+            //检查订单
+            checkOrderInterval = setInterval(checkOrder, 1000);
+        });
+    
+    function copyVal(val){
+        var clipboard = new Clipboard('.copy', {
+            text: function() {
+                return val;
+            }
+        });
+        clipboard.on('success', function(e) {
+            layer.msg("复制成功!")
+        });
+
+        clipboard.on('error', function(e) {
+            layer.msg("快捷复制失败,请长按文本选择");
+        });
+
+    }
+    
+  
+
+    function showHideCode(){
+        $("#showdiv").toggle();
+    }
+    
+    
+    setInterval(function(){
+        $.ajax({
+            url:'/api/gateway/checkorder',
+            data:{tradeNo: orderNo},
+            type:'post',
+            dataType:'jsonp',
+            success:function(opResult){
+                if(opResult.status==1){
+                    //  alert("支付成功!即将返回商户地址");
+                    window.location.href=opResult.dataValue;
+                }
+                if(opResult.status==2){
+                    layer.msg("订单已过期");
+                    window.location.href="";
+                }
+            }
+        });
+
+    },3000);
+
+</script>
+
+
+
+
+
+</body></html>

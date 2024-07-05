@@ -1,0 +1,385 @@
+/*通用类*/
+*{
+	margin:0;		
+	padding:0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+
+/*兼容老设备的rem-px基准*/
+html{
+	font-size:42.6667px;	
+}
+@media screen and (max-width: 320px){ 
+  html{
+  	font-size:42.6667px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 360px){ 
+  html{
+  	font-size:48px;
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 375px){ 
+  html{
+  	font-size:50px;
+  }
+}
+@media screen and (min-width: 376px) and (max-width: 414px){ 
+  html{
+  	font-size:55px;
+  }
+}
+@media screen and (min-width: 415px) and (max-width: 484px){ 
+  html{
+  	font-size:64px;
+  }
+}
+@media screen and (min-width: 485px) and (max-width: 720px){ 
+  html{
+  	font-size:96px;
+  }
+}
+@media screen and (min-width: 721px) and (max-width: 768px){ 
+  html{
+  	font-size:102px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1080px){ 
+  html{
+  	font-size:144px;
+  }
+}
+@media screen and (min-width: 1080px){ 
+  html{
+  	font-size:144px;
+  }
+}
+/*新设备的rem-vw标准*/
+html{	
+	overflow-x:hidden;
+	font-size:13.3333333333vw;	/*一便rem.js失效，这里起作用*/
+}
+
+body{		
+	width:100%;	
+	min-width:320px;
+	min-height: 100vh;
+	margin:0 auto;	
+	font-family:PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Microsoft YaHei,Source Han Sans CN,sans-serif;
+	background:#00a9ea;
+	overflow-x:hidden;
+	text-align:left;	
+	position:relative;
+	font-size:0.24rem;
+	-webkit-text-size-adjust: 100% !important;
+	text-size-adjust: 100% !important;
+	-moz-text-size-adjust: 100% !important;
+	color:#303030;
+}
+
+img{
+	border:none;	
+}
+h1,h2,h3{
+	font-weight:normal;	
+}
+a{
+	color:#303030;
+	text-decoration:none;	
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color:transparent;
+	outline:none；
+}
+input,textarea,select{
+	font-family:PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Microsoft YaHei,Source Han Sans CN,sans-serif;
+	font-size:1em;
+	outline:none;
+	margin:0;
+	padding:0;
+}
+input::-webkit-input-placeholder {
+	color: #a0a0a0 !important;
+}
+textarea::-webkit-input-placeholder {
+	color: #a0a0a0 !important;
+}
+input[type='button'],input[type='text'],input[type='search'], input[type='submit'], input[type='reset'],input[type='date'],input[type='time'],input[type='number'] {
+	-webkit-appearance: none;
+}
+select{
+	-webkit-appearance: none;
+	-webkit-appearance: none;
+	appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    border:none;	
+}
+textarea{ 
+	-webkit-appearance: none;
+}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+ul,ol{
+	padding:0;
+	list-style-type:none;	
+}
+em{
+	font-style:normal;	
+}
+.lt{
+	float:left;	
+}
+.rt{
+	float:right;	
+}
+input.sub,label{
+	border:none;	
+	cursor:pointer;
+}
+input,textarea{
+	font-family:PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Microsoft YaHei,Source Han Sans CN,sans-serif;
+	outline:none;	
+	margin:0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;	
+}
+td,th{
+	padding:0;	
+}
+div.clear{
+	font: 0px Arial; line-height:0;
+	height:0; 
+	overflow:hidden;	
+	clear:both;	
+}
+
+
+.pd25{
+	padding:0.25rem;
+}
+.main{
+	background:#fff;
+	border-radius:0.1rem;
+	padding-top:0.36rem;
+}
+.main .head{
+	color:#00a9ec;
+	margin-left:1.6rem;
+	padding-left:0.96rem;
+	height: 0.8rem;
+	background:url("../images/dhead.png") no-repeat left center;
+	background-size:auto 100%;
+}
+.main .head dt{
+	height: 0.54rem;
+	line-height: 0.54rem;
+	font-size:0.28rem;
+}
+.main .head dd{
+	height: 0.24rem;
+	line-height: 0.24rem;
+	font-size:0.2rem;
+}
+.je{
+	text-align: center;
+	color:#00a9ec;
+	line-height: 0.4rem;
+	margin-top:0.2rem;
+}
+.je .all{
+	font-size:0.5rem;
+	text-decoration: none;
+	color:#f00;
+}
+.je .copy_btn1{
+	margin-left:1em;
+}
+.wait{
+	text-align: center;
+	color:#1ea100;
+	font-size:0.28rem;
+	line-height: 1.8;
+}
+.title{
+	width: 6.6rem;
+	height: 0.54rem;
+	line-height: 0.54rem;
+	background:#044f06;
+	font-size:0.28rem;
+	border-radius:0 0.22rem 0.22rem 0;
+	color:#fff;
+	text-indent:0.22rem;
+}
+.title2{
+	width: 3.4rem;
+	height: 0.44rem;
+	line-height: 0.44rem;
+	background:#00a9ea;
+	font-size:0.25rem;
+	border-radius:0 0.22rem 0.22rem 0;
+	color:#fff;
+	text-indent:0.22rem;
+}
+.t2{
+	text-align: center;
+	height: 0.72rem;
+	line-height: 0.72rem;
+	color:#ff0000;
+	font-size:0.26rem;
+}
+.code{
+	width: 2.9rem;
+	padding:0.15rem;
+	border:0.05rem solid #00a9ea;
+	border-radius:0.2rem;
+	margin:0 auto 0.4rem auto;
+}
+.code img{
+	display: block;
+	width: 2.9rem;
+	height: 2.9rem;
+}
+.copy{
+	width: 5.8rem;
+	margin:0.3rem auto 0 auto;
+	padding:0.2rem;
+	border:0.05rem solid #00a9ea;
+	border-radius:0.3rem;
+	line-height: 0.48rem;
+}
+.copy li{
+	height: 0.48rem;
+	clear: both;
+	font-weight: bold;
+}
+.copy .copy_btn{
+	float: right;
+	color:#0068d2;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.t3{
+	text-align: center;
+	margin:0.2rem 0 0 0;
+	color:#f00;
+	font-size:0.26rem;
+	line-height: 0.34rem;
+	text-decoration: underline;
+}
+.t4{
+	text-align: center;
+	line-height: 3;
+	color:#00a9ea;
+}
+.banner{
+	position: relative;
+	margin:0.3rem auto;
+}
+.banner img{
+	display: block;
+	width: 3.6rem;
+	height:auto;
+	margin:0 auto;
+}
+.banner .cbtn{
+	width: 1rem;
+	height: 1rem;
+	position: absolute;
+	top: 50%;
+	z-index: 20;
+	margin-top:-0.5rem;
+}
+.banner .my-prev{
+	left: 0.2rem;
+	background:url("../images/prev.png") no-repeat center center;
+	background-size:auto 1rem;
+}
+.banner .my-next{
+	right: 0.2rem;
+	background:url("../images/next.png") no-repeat center center;
+	background-size:auto 1rem;
+}
+.end{
+	text-align: center;
+	line-height: 3;
+	color:#fff;
+	font-size:0.28rem;
+}
+.code_out{
+	position: relative;
+	padding:0.5rem 0;
+}
+.code_out .s1{
+	color:#f00;
+	width: 0.24rem;
+	position: absolute;
+	left: 0.5rem;
+	top: 0.5rem;
+}
+.code_out .s2{
+	color:#f00;
+	width: 0.24rem;
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+}
+.type{
+	text-align: center;
+	padding:0.95rem 0; display:none;
+}
+.type .ico{
+	display: block;
+	width: 1.4rem;
+	height: 1.4rem;
+	margin:0 auto 0.2rem auto;
+}
+.type .s1{
+	height: 0.6rem;
+	line-height: 0.6rem;
+	font-size:0.35rem;
+}
+.type .s2{
+	font-size:0.28rem;
+	line-height: 0.56rem;
+	color:#999;
+}
+#tan{ display:none; position:fixed; left:0; top:0; width:100%; left:0; top:0; background:#fff ; height:100%; z-index:999}
+
+
+.copy_tip{
+	text-align: center;
+	color:#f00;
+	padding:0.2rem 0 0 0;
+}
+.copy_tip dd{
+	height: 0.5rem;
+	line-height: 0.5rem;
+}
+.copy_tip a{
+	display: block;
+	width: 5rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	border-radius:0.4rem;
+	background:#f83d38;
+	margin:0 auto;
+	color:#fff;
+	font-size:0.3rem;
+	position: relative;
+	box-shadow:0.02rem 0.02rem 0.02rem rgba(0,0,0,0.5);
+}
+.copy_tip i{
+	display: block;
+	width: 0.4rem;
+	height: 0.06rem;
+	border-radius:0.05rem;
+	background:rgba(255,255,255,0.3);
+	position: absolute;
+	right: 0.35rem;
+	top: 0.15rem;
+}

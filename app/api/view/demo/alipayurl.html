@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>go go</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css">
+    
+    <script src="/assets/static/layui/layui.js" type="text/javascript"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                
+                <form id="loginForm">
+                     <div class="form-group mt-3">
+                        <label for="username">账号</label>
+                        <input type="text" class="form-control" id="username" placeholder="输入账号">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="qrcode_id">码id</label>
+                        <input type="text" class="form-control" id="qrcode_id" placeholder="输入收款码列表id">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="pay_url">链接1</label>
+                        <input type="text" class="form-control" id="pay_url" placeholder="输入链接1">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="pay_url">链接2</label>
+                        <input type="text" class="form-control" id="business_url" placeholder="输入链接2">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">提交</button>
+                    <button type="button" class="btn btn-secondary w-100 mt-3" onclick="resetForm()">重置</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+    layui.use(['layer','form'], function(){
+        var $ = layui.jquery, layer = layui.layer, form = layui.form;
+    })
+        
+        $(document).ready(function(){
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+
+                var qrcode_id = $('#qrcode_id').val();
+                var pay_url = $('#pay_url').val();
+                var business_url = $('#business_url').val();
+                var username = $('#username').val();
+                
+                
+                if (!qrcode_id) {
+                    layer.msg('请输入id', {time : 5000, anim: 6});
+                    return;
+                }
+                
+                
+                $.ajax({
+                    url: "/api/demo/subAliUrl",
+                    type: 'POST',
+                    
+                    data: {
+                        qrcode_id: qrcode_id,
+                        pay_url: pay_url,
+                        business_url: business_url,
+                        username: username,
+                        
+                    },
+                    success: function(response) {
+                        var code = response.code;
+                        if(code == 1){
+                            layer.msg(response.msg, {icon:1, time : 3000});
+                            
+                            
+                        }else{
+                            layer.msg(response.msg, {icon:2, time : 4000});
+                            
+                            
+                        }
+                        
+                    },
+                    error: function(error) {
+                        $('#log').val("Error: " + JSON.stringify(error, null, 2));
+                    }
+                });
+                
+                
+            });
+        });
+        
+        function resetForm() {
+            $('#qrcode_id').val('');
+            $('#pay_url').val('');
+            $('#business_url').val('');
+            //$('#loginForm')[0].reset();
+        }
+
+    </script>
+</body>
+</html>

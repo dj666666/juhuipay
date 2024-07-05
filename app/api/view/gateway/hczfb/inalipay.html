@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://p.6ffk7p.z1024.top/zfb/pc/29330620 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="UTF-8">
+    <title>支付宝收银台</title>
+    <link href="/assets/css/dfpay/dfpay.css" rel="stylesheet" media="screen">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+    <script src="/assets/css/dfpay/qrcode.min.js"></script>
+    
+</head>
+<body>
+    <div class="body">
+        <form id='topay' action="https://paygw.yemadai.com/scan/merchant/dopay" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="requestDomain" value="{$remark}">
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("topay").submit();
+    </script>
+
+</body>
+
+
+    
+</html>

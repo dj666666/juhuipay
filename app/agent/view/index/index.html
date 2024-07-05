@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{$config.language}">
+    <head>
+        <!-- 加载样式及META信息 -->
+        {include file="common/meta" /}
+    </head>
+    <body class="hold-transition {$Think.config.fastadmin.adminskin|default='skin-black-blue'} sidebar-mini fixed {:$Think.config.fastadmin.multipletab?'multipletab':''} {:$Think.config.fastadmin.multiplenav?'multiplenav':''}" id="tabs">
+
+    <div class="wrapper">
+
+            <!-- 头部区域 -->
+            <header id="header" class="main-header">
+                <!--{if preg_match('/\/yfcmf\/|admin/i', url('index/index'))}
+                <div class="alert alert-danger-light text-center" style="margin-bottom:0;border:none;">
+                    {:__('Security tips')}
+                </div>
+                {/if}-->
+                {include file='common/header' /}
+            </header>
+
+            <!-- 左侧菜单栏 -->
+            <aside class="main-sidebar">
+                {include file='common/menu' /}
+            </aside>
+
+            <!-- 主体内容区域 -->
+            <div class="content-wrapper tab-content tab-addtabs">
+                {if $fixedmenu}
+                <div role="tabpanel" class="tab-pane {:$referermenu?'':'active'}" id="con_{$fixedmenu.id}">
+                    <iframe src="{$fixedmenu.url}?addtabs=1" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling-x="no" scrolling-y="auto" allowtransparency="yes"></iframe>
+                </div>
+                {/if}
+                {if $referermenu}
+                <div role="tabpanel" class="tab-pane active" id="con_{$referermenu.id}">
+                    <iframe src="{$referermenu.url}?addtabs=1" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling-x="no" scrolling-y="auto" allowtransparency="yes"></iframe>
+                </div>
+                {/if}
+            </div>
+            
+            <div class="modal fade" id="bindGoogleAuthModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+                
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">绑定谷歌验证码</h4>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <!-- 绑定谷歌验证码的表单 -->
+                            <form id="bindGoogleAuthForm">
+                                <div class="form-group row">
+                                    <label for="googlediv" class="col-sm-2 col-form-label">扫码绑定</label>
+                                    <div class="col-sm-4" id = "googlediv" style="height:150px;width:150px;">
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="googleSecret" class="col-sm-2 col-form-label">谷歌密钥</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="googleSecret" name="google_secret" value="{$google_code|htmlentities}"readonly required>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="button" class="btn btn-success" id="copyGoogleSecretBtn">复制</button>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="googleCode" class="col-sm-2 col-form-label">谷歌验证码</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="googleCode" name="google_code" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" id="bindGoogleAuthBtn">绑定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- 底部链接,默认隐藏 -->
+            <footer class="main-footer hide">
+                <div class="pull-right hidden-xs">
+                </div>
+                <strong>Copyright &copy; 2019-{:date('Y')} <a href="https://www.iuok.cn">YFCMF-TP6</a>.</strong> All rights reserved.
+            </footer>
+
+            <!-- 右侧控制栏 -->
+            <div class="control-sidebar-bg"></div>
+            {include file="common/control" /}
+        </div>
+
+        <!-- 加载JS脚本 -->
+        {include file="common/script" /}
+    </body>
+</html>

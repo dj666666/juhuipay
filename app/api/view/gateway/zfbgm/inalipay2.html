@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://fk.fateqqq.com/pay/service/payinfo?H5-orderId=202211211011158174 -->
+<html lang="en">
+    <script src="chrome-extension://dlcobpjiigpikoobohmabehhmhfoodbb/inpage.js" id="argent-x-extension" data-extension-id="dlcobpjiigpikoobohmabehhmhfoodbb"></script>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>支付宝收银台</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <!--<meta http-equiv="refresh" content="4">-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/pay/alipay_jump_style.css">
+    <script src="/assets/static/js/jquery3.3.1.js"></script>
+
+</head>
+<body>
+<section class="aui-flexView">
+  <header class="aui-navBar aui-navBar-fixed">
+    <div class="aui-center"> <span class="aui-center-title"><img src="/assets/img/pay-ali.png"></span> </div>
+  </header>
+  <section class="aui-scrollView">
+    <div class="aui-pay-box">
+      <div class="aui-pay-text">
+        <p>支付金额</p>
+        <h2><em>￥</em>{$pay_amount}</h2>
+        
+      </div>
+      <div class="aui-pay-fill">
+        <div class="aui-pay-flex">
+          <div class="aui-flex b-line">
+            <div class="aui-flex-box">
+              <h2 class="aui-pay-titleS">支付信息</h2>
+            </div>
+          </div>
+          <div class="aui-pay-info">
+            <p class="aui-flex">订单金额 <em class="aui-flex-box">{$pay_amount}</em></p>
+            <!--<p class="aui-flex">应支付金额 <em class="aui-flex-box">{$pay_amount}</em></p>-->
+            <p class="aui-flex">订单号 <em class="aui-flex-box">{$out_trade_no}</em></p>
+                        <p class="aui-flex">当前状态 <em class="aui-flex-box" style="color:#ff0000;">待支付</em></p>
+                        <p class="aui-flex">下单时间 <em class="aui-flex-box">{$create_time}</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="aui-pay-com">
+          <button>立即支付</button>
+      </div>
+      <div class="copyright">Copyright © 支付宝版权所有 2004-2022</div>
+    </div>
+  </section>
+</section>
+<script>
+
+
+    var orderNo = '<?php echo $out_trade_no ;?>';
+    var orderstatus='2';//2为待支付，1为已支付完 3为过期
+    
+    function toast(config, callback){
+      AlipayJSBridge.call('toast',config, callback);
+    }
+    function ready(callback) {
+        
+        var url    = '<?php echo $inalipay_url ;?>';
+    
+      // 如果jsbridge已经注入则直接调用
+      if (window.AlipayJSBridge) {
+        callback && callback();
+      } else {
+        // 如果没有注入则监听注入的事件
+        document.addEventListener('AlipayJSBridgeReady', callback, false);
+      }
+    }
+    
+    var browser = navigator.userAgent.toLowerCase();
+    if (browser.match(/Alipay/i)=="alipay") {
+    	ready(function(){});
+    	//隐藏右上角菜单
+    	AlipayJSBridge.call('hideOptionMenu');
+    }
+    $(document).ready(function(e) {
+        
+        //检查订单
+        checkOrderInterval = setInterval(checkOrder, 1000);
+            
+    	$(".aui-pay-com button").click(function(e) {
+    		var browser = navigator.userAgent.toLowerCase();
+    		if (browser.match(/Alipay/i)=="alipay" && orderstatus==2) {
+                AlipayJSBridge.call('pushWindow', {
+                    url: '<?php echo $inalipay_url ;?>',
+    				param: {
+    					readTitle: true,
+    					showOptionMenu: false
+    				}
+    			});
+            }
+    		else if(browser.match(/Alipay/i)=="alipay" && orderstatus==1){
+        	    toast({
+          	    content: '请勿重复支付',
+          	    type: 'fail'
+        	    }, function(e){
+        	        AlipayJSBridge.call('popWindow');
+        	    });
+    		}
+    		else if(browser.match(/Alipay/i)=="alipay"){
+    		    toast({
+          	    content: '请重新发起支付',
+          	    type: 'fail'
+        	    }, function(e){
+        	        AlipayJSBridge.call('popWindow');
+        	    });
+    		}
+    		else{
+    			alert('仅限在支付宝内支付');
+    		}
+        });
+    });
+    
+    
+    var checkOrder = function () {
+            $.get("/api/gateway/checkorder", { tradeNo: orderNo, t: Math.random() }, function (result) {
+                if (result.data.status == "2") {
+                    //未支付
+                    $("#orderStatus").innerHTML = "等待支付";
+                    
+                }else if (result.data.status == "3") {
+                    //订单过期
+                    $("#orderStatus").innerHTML = "订单过期";
+                    setQrCodeTimeOut("订单已过期，请重新提交订单");
+                    
+                }else {
+                    //支付成功
+                    clearInterval(checkOrderInterval);
+                    
+                    location.reload();
+                }
+            });
+        }
+        
+</script>
+
+</body>
+
+</html>
